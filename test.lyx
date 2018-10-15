@@ -7,6 +7,36 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
+\begin_local_layout
+#\DeclareLyXModule[algpseudocode.sty]{Pseudocode}
+#DescriptionBegin
+# Adds support for pseudocode formatting using the algorithmicx package.
+#DescriptionEnd
+# Author: Paul A. Rubin <rubin@msu.edu>
+Format 66
+Style Algorithm
+  Category "Pseudocode"
+  Preamble
+    \usepackage{algpseudocode}
+  EndPreamble
+  Argument 1
+    LabelString "Algorithm line numbering"
+    Tooltip "0 for no line number, n for line numbers in multiples of n"
+    Mandatory 0
+  EndArgument
+  LabelFont
+    Size           largest
+    Family         Roman
+    Color          latex
+  EndFont
+  LabelString "Algorithmic"
+  LabelType "Above"
+  EndLabelString "End_algorithm"
+  EndLabelType "Below"
+  LatexName "algorithmic"
+  LatexType Environment
+End
+\end_local_layout
 \language english
 \language_package default
 \inputencoding auto
@@ -97,6 +127,59 @@ algorithmx
 \family default
  \SpecialChar LaTeX
  package).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+State 
+\end_layout
+
+\end_inset
+
+hi
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Some Random Algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
