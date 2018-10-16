@@ -14,27 +14,63 @@
 #DescriptionEnd
 # Author: Paul A. Rubin <rubin@msu.edu>
 Format 66
+Preamble
+    \usepackage{algpseudocode}
+%    \newcommand{\forblock}[2]{\For{#1}\\#2\EndFor}
+EndPreamble
 Style Algorithm
   Category "Pseudocode"
-  Preamble
-    \usepackage{algpseudocode}
-  EndPreamble
+  LatexType Environment
+  LatexName "algorithmic"
   Argument 1
-    LabelString "Algorithm line numbering"
+    LabelString "Line numbering"
+    MenuString "Set line numbering"
     Tooltip "0 for no line number, n for line numbers in multiples of n"
     Mandatory 0
   EndArgument
-  LabelFont
-    Size           largest
-    Family         Roman
-    Color          latex
-  EndFont
-  LabelString "Algorithmic"
-  LabelType "Above"
-  EndLabelString "End_algorithm"
-  EndLabelType "Below"
-  LatexName "algorithmic"
-  LatexType Environment
+  AutoNests
+    Statement, ForBlock, EndFor
+  EndAutoNests
+End
+Style Statement
+  Category "Pseudocode"
+  LatexType Command
+  LatexName "State"
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+End
+InsetLayout "Flex:Code comment"
+  LyxType Custom
+  LatexType Command
+  LatexName "Comment"
+  LabelString "comment"
+End
+Style ForBlock
+  Category "Pseudocode"
+  LatexType Command
+#  LatexName "forblock"
+  LatexName "For"
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+#  LabelString "for-loop"
+  LabelString "For"
+#  Argument 1
+#    LabelString "Loop condition"
+#    MenuString "Set loop condition"
+#    Mandatory 1
+#  EndArgument
+End
+Style EndFor
+  Category "Pseudocode"
+  LatexType Command
+  LatexName "EndFor
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Manual
+  LabelString "TADA"
 End
 \end_local_layout
 \language english
@@ -146,26 +182,106 @@ status open
 \end_inset
 
 
-\begin_inset ERT
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+Hi 
+\begin_inset Flex Code comment
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-State 
+I'm home
 \end_layout
 
 \end_inset
 
-hi
+
 \end_layout
 
+\begin_layout Statement
+Bye 
+\end_layout
+
+\begin_layout Statement
+See ya
+\end_layout
+
+\end_deeper
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Some Random Algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+Get ready
+\end_layout
+
+\begin_layout ForBlock
+\begin_inset Formula $i=1,\dots,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Statement
+This
+\end_layout
+
+\begin_layout Statement
+That
+\end_layout
+
+\begin_layout Statement
+Something else
+\end_layout
+
+\begin_layout EndFor
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adventures in Looping
 \end_layout
 
 \end_inset
