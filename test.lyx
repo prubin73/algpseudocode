@@ -33,7 +33,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, "For Loop", "Repeat Block"
+    Statement, "For Loop", "Repeat Block", "Loop"
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -52,7 +52,7 @@ Style Statement
   LatexType Command
   LatexName "State"
   IsAutoNestedBy
-    Algorithm, "For Loop", "Repeat Block"
+    Algorithm, "For Loop", "Repeat Block", "Loop"
   EndIsAutoNestedBy
   LabelType Static
   LabelString "Statement:  "
@@ -89,10 +89,10 @@ Style "For Loop"
     Series bold
   EndFont
   AutoNests
-    Statement, "Repeat Block"
+    Statement, "For Loop", "Repeat Block", "Loop"
   EndAutoNests
   IsAutoNestedBy
-    Algorithm, "Repeat Block"
+    Algorithm, "For Loop", "Repeat Block", "Loop"
   EndIsAutoNestedBy
   KeepEmpty 1
   Argument 1
@@ -120,10 +120,40 @@ Style "Repeat Block"
     Series bold
   EndFont
   AutoNests
-    Statement, "For Loop"
+    Statement, "For Loop", "Repeat Block", "Loop"
   EndAutoNests
   IsAutoNestedBy
-    Algorithm
+    Algorithm, "For Loop", "Repeat Block", "Loop"
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "termination condition"
+    MenuString "Set termination condition"
+    Tooltip "Specify the conditions for terminating the loop"
+    Mandatory 1
+  EndArgument
+End
+# This implements plain loops.
+Style "Loop"
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "loopblock"
+  Preamble
+    \newenvironment{loopblock}{\Loop}{\EndLoop}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin loop"
+  EndLabelType Static
+  EndLabelString "End loop"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement, "For Loop", "Repeat Block", "Loop"
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm, "For Loop", "Repeat Block", "Loop"
   EndIsAutoNestedBy
   KeepEmpty 1
   Argument 1
@@ -443,6 +473,74 @@ x
 
 \begin_layout Plain Layout
 Repeat Block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Loop
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+Do this
+\end_layout
+
+\begin_layout Statement
+Do that
+\end_layout
+
+\end_deeper
+\begin_layout Loop
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Plain Loop
 \end_layout
 
 \end_inset
