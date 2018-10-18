@@ -40,7 +40,7 @@ Style Algorithm
   EndLabelType Static
   EndLabelString "End algorithm"
   LabelFont
-    Color red
+    Color green
     Series bold
   EndFont
 End
@@ -54,6 +54,13 @@ Style Statement
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Statement:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
 End
 #
 # The "Code comment" inset allows you to add comments to other
@@ -72,8 +79,14 @@ Style EndFor
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
-  LabelType Manual
-  LabelString "TADA"
+  LabelType Static
+  LabelString "End for"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+  KeepEmpty 1
 End
 Style ForLoop
   Category "Pseudocode"
@@ -84,14 +97,12 @@ Style ForLoop
   EndIsAutoNestedBy
   LabelType Static
   LabelString "ForLoop:  "
-  EndLabelType Static
-  Margin Static
+  Margin Manual
   LeftMargin "ForLoop:   "
   LabelFont
-    Color red
+    Color green
     Series bold
   EndFont
-  EndLabelString "  EndForLoop"
 End
 \end_local_layout
 \language english
@@ -230,6 +241,10 @@ See ya
 \end_layout
 
 \end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
@@ -253,7 +268,6 @@ Some Random Algorithm
 
 \begin_layout Standard
 \begin_inset Float algorithm
-placement h
 wide false
 sideways false
 status open
@@ -277,6 +291,7 @@ Prep first
 \end_layout
 
 \begin_layout ForLoop
+\labelwidthstring ForLoop:  
 \begin_inset Formula $i=1,\dots,N$
 \end_inset
 
@@ -284,7 +299,11 @@ Prep first
 \end_layout
 
 \begin_layout Statement
-Scratch butt
+do something
+\end_layout
+
+\begin_layout Statement
+do another thing
 \end_layout
 
 \begin_layout EndFor
@@ -292,11 +311,15 @@ Scratch butt
 \end_layout
 
 \end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Another Try At For
+A For Loop
 \end_layout
 
 \end_inset
@@ -325,6 +348,10 @@ status open
 x
 \end_layout
 
+\begin_layout Statement
+y
+\end_layout
+
 \end_deeper
 \begin_layout Algorithm
 
@@ -347,6 +374,25 @@ Testing
 
 \end_layout
 
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_deeper
+\begin_layout ForLoop
+\labelwidthstring ForLoop:  
+some condition
+\end_layout
+
+\begin_layout Statement
+do something
+\end_layout
+
+\begin_layout EndFor
+
+\end_layout
+
+\end_deeper
 \begin_layout Algorithm
 
 \end_layout
