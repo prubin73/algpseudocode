@@ -33,7 +33,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, EndFor, ForLoop
+    Statement, ForLoop
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -52,7 +52,7 @@ Style Statement
   LatexType Command
   LatexName "State"
   IsAutoNestedBy
-    Algorithm
+    Algorithm, ForLoop
   EndIsAutoNestedBy
   LabelType Static
   LabelString "Statement:  "
@@ -72,37 +72,35 @@ InsetLayout "Flex:Code comment"
   LatexName "Comment"
   LabelString "comment"
 End
-Style ForLoop
+# This style implements for loops.
+Style "For Loop"
   Category "Pseudocode"
-  LatexType Command
-  LatexName For
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  LabelType Static
-  LabelString "ForLoop:  "
-  Margin Manual
-  LeftMargin "ForLoop:   "
+  LatexType Environment
+  LatexName "forloop"
+  Preamble
+    \newenvironment{forloop}[1]{\For{#1}}{\EndFor}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin for"
+  EndLabelType Static
+  EndLabelString "End for"
   LabelFont
     Color green
     Series bold
   EndFont
-End
-Style EndFor
-  Category "Pseudocode"
-  LatexType Command
-  LatexName "EndFor
+  AutoNests
+    Statement
+  EndAutoNests
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
-  LabelType Static
-  LabelString "End for"
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  Margin Dynamic
   KeepEmpty 1
+  Argument 1
+    LabelString "loop condition"
+    MenuString "Set loop condition"
+    Tooltip "Specify the conditions for iterating"
+    Mandatory 1
+  EndArgument
 End
 \end_local_layout
 \language english
@@ -257,10 +255,6 @@ Some Random Algorithm
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -268,6 +262,7 @@ Some Random Algorithm
 
 \begin_layout Standard
 \begin_inset Float algorithm
+placement h
 wide false
 sideways false
 status open
@@ -287,26 +282,46 @@ status open
 
 \begin_deeper
 \begin_layout Statement
-Prep first
+Get ready
 \end_layout
 
-\begin_layout ForLoop
-\labelwidthstring ForLoop:  
-\begin_inset Formula $i=1,\dots,N$
+\begin_layout For Loop
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $i=0;i\le N;i++$
 \end_inset
 
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Flex Code comment
+status open
+
+\begin_layout Plain Layout
+for each index
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Statement
-do something
+Step 1
 \end_layout
 
 \begin_layout Statement
-do another thing
+Step 2
 \end_layout
 
-\begin_layout EndFor
+\end_deeper
+\begin_layout For Loop
 
 \end_layout
 
@@ -319,7 +334,7 @@ do another thing
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-A For Loop
+For As Environment
 \end_layout
 
 \end_inset
@@ -327,31 +342,12 @@ A For Loop
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
-
-\end_layout
-
-\begin_layout Algorithm
-
-\end_layout
-
-\begin_deeper
-\begin_layout ForLoop
-\labelwidthstring ForLoop:  
-some condition
-\end_layout
-
-\begin_layout Statement
-do something
-\end_layout
-
-\begin_layout EndFor
-
-\end_layout
-
-\end_deeper
-\begin_layout Algorithm
 
 \end_layout
 
