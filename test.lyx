@@ -33,7 +33,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, ForLoop
+    Statement, "For Loop", "Repeat Block"
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -52,7 +52,7 @@ Style Statement
   LatexType Command
   LatexName "State"
   IsAutoNestedBy
-    Algorithm, ForLoop
+    Algorithm, "For Loop", "Repeat Block"
   EndIsAutoNestedBy
   LabelType Static
   LabelString "Statement:  "
@@ -89,16 +89,47 @@ Style "For Loop"
     Series bold
   EndFont
   AutoNests
-    Statement
+    Statement, "Repeat Block"
   EndAutoNests
   IsAutoNestedBy
-    Algorithm
+    Algorithm, "Repeat Block"
   EndIsAutoNestedBy
   KeepEmpty 1
   Argument 1
     LabelString "loop condition"
     MenuString "Set loop condition"
     Tooltip "Specify the conditions for iterating"
+    Mandatory 1
+  EndArgument
+End
+# This implements repeat blocks.
+Style "Repeat Block"
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "repeatblock"
+  Preamble
+    \newsavebox{\untilthis}
+    \newenvironment{repeatblock}[1]{\sbox{\untilthis}{#1}\Repeat}{\Until{\usebox{\untilthis}}}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin repeat"
+  EndLabelType Static
+  EndLabelString "End repeat"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement, "For Loop"
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "termination condition"
+    MenuString "Set termination condition"
+    Tooltip "Specify the conditions for terminating the loop"
     Mandatory 1
   EndArgument
 End
@@ -334,7 +365,84 @@ Step 2
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-For As Environment
+For Loop
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Repeat Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{i}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+x
+\end_layout
+
+\end_deeper
+\begin_layout Repeat Block
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Repeat Block
 \end_layout
 
 \end_inset
