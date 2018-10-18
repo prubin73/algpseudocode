@@ -18,10 +18,14 @@ Preamble
     \usepackage{algpseudocode}
 %    \newcommand{\forblock}[2]{\For{#1}\\#2\EndFor}
 EndPreamble
+#
+# The Algorithm environment is the container for all pseudocode.
+#
 Style Algorithm
   Category "Pseudocode"
   LatexType Environment
   LatexName "algorithmic"
+  KeepEmpty 1
   Argument 1
     LabelString "Line numbering"
     MenuString "Set line numbering"
@@ -29,9 +33,20 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, ForBlock, EndFor
+    Statement, EndFor, ForLoop
   EndAutoNests
+  LabelType Above
+  LabelString "Begin algorithm"
+  EndLabelType Static
+  EndLabelString "End algorithm"
+  LabelFont
+    Color red
+    Series bold
+  EndFont
 End
+#
+# Statement is how you enter typical pseudocode statements.
+#
 Style Statement
   Category "Pseudocode"
   LatexType Command
@@ -40,27 +55,15 @@ Style Statement
     Algorithm
   EndIsAutoNestedBy
 End
+#
+# The "Code comment" inset allows you to add comments to other
+# pseudocode entries (such as statements).
+#
 InsetLayout "Flex:Code comment"
   LyxType Custom
   LatexType Command
   LatexName "Comment"
   LabelString "comment"
-End
-Style ForBlock
-  Category "Pseudocode"
-  LatexType Command
-#  LatexName "forblock"
-  LatexName "For"
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-#  LabelString "for-loop"
-  LabelString "For"
-#  Argument 1
-#    LabelString "Loop condition"
-#    MenuString "Set loop condition"
-#    Mandatory 1
-#  EndArgument
 End
 Style EndFor
   Category "Pseudocode"
@@ -71,6 +74,24 @@ Style EndFor
   EndIsAutoNestedBy
   LabelType Manual
   LabelString "TADA"
+End
+Style ForLoop
+  Category "Pseudocode"
+  LatexType Command
+  LatexName For
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "ForLoop:  "
+  EndLabelType Static
+  Margin Static
+  LeftMargin "ForLoop:   "
+  LabelFont
+    Color red
+    Series bold
+  EndFont
+  EndLabelString "  EndForLoop"
 End
 \end_local_layout
 \language english
@@ -167,6 +188,7 @@ algorithmx
 
 \begin_layout Standard
 \begin_inset Float algorithm
+placement h
 wide false
 sideways false
 status open
@@ -231,6 +253,7 @@ Some Random Algorithm
 
 \begin_layout Standard
 \begin_inset Float algorithm
+placement h
 wide false
 sideways false
 status open
@@ -250,26 +273,18 @@ status open
 
 \begin_deeper
 \begin_layout Statement
-Get ready
+Prep first
 \end_layout
 
-\begin_layout ForBlock
-\begin_inset Formula $i=1,\dots,n$
+\begin_layout ForLoop
+\begin_inset Formula $i=1,\dots,N$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Statement
-This
-\end_layout
-
-\begin_layout Statement
-That
-\end_layout
-
-\begin_layout Statement
-Something else
+Scratch butt
 \end_layout
 
 \begin_layout EndFor
@@ -281,20 +296,58 @@ Something else
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Adventures in Looping
+Another Try At For
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+x
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
 
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Testing
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Algorithm
 
 \end_layout
 
