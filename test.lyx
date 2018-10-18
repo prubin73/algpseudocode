@@ -72,22 +72,6 @@ InsetLayout "Flex:Code comment"
   LatexName "Comment"
   LabelString "comment"
 End
-Style EndFor
-  Category "Pseudocode"
-  LatexType Command
-  LatexName "EndFor
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  LabelType Static
-  LabelString "End for"
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  Margin Dynamic
-  KeepEmpty 1
-End
 Style ForLoop
   Category "Pseudocode"
   LatexType Command
@@ -103,6 +87,22 @@ Style ForLoop
     Color green
     Series bold
   EndFont
+End
+Style EndFor
+  Category "Pseudocode"
+  LatexType Command
+  LatexName "EndFor
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "End for"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+  KeepEmpty 1
 End
 \end_local_layout
 \language english
@@ -320,48 +320,6 @@ do another thing
 
 \begin_layout Plain Layout
 A For Loop
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Algorithm
-
-\end_layout
-
-\begin_deeper
-\begin_layout Statement
-x
-\end_layout
-
-\begin_layout Statement
-y
-\end_layout
-
-\end_deeper
-\begin_layout Algorithm
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Testing
 \end_layout
 
 \end_inset
