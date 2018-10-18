@@ -89,10 +89,10 @@ Style "For Loop"
     Series bold
   EndFont
   AutoNests
-    Statement, "For Loop", "Repeat Block", "Loop"
+    Statement
   EndAutoNests
   IsAutoNestedBy
-    Algorithm, "For Loop", "Repeat Block", "Loop"
+    Algorithm
   EndIsAutoNestedBy
   KeepEmpty 1
   Argument 1
@@ -120,10 +120,10 @@ Style "Repeat Block"
     Series bold
   EndFont
   AutoNests
-    Statement, "For Loop", "Repeat Block", "Loop"
+    Statement
   EndAutoNests
   IsAutoNestedBy
-    Algorithm, "For Loop", "Repeat Block", "Loop"
+    Algorithm
   EndIsAutoNestedBy
   KeepEmpty 1
   Argument 1
@@ -150,10 +150,10 @@ Style "Loop"
     Series bold
   EndFont
   AutoNests
-    Statement, "For Loop", "Repeat Block", "Loop"
+    Statement
   EndAutoNests
   IsAutoNestedBy
-    Algorithm, "For Loop", "Repeat Block", "Loop"
+    Algorithm
   EndIsAutoNestedBy
   KeepEmpty 1
   Argument 1
@@ -541,6 +541,114 @@ Do that
 
 \begin_layout Plain Layout
 Plain Loop
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout For Loop
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout For Loop
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $i=1,\dots,N$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Repeat Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x>\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+\begin_inset Formula $x\leftarrow x+1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Repeat Block
+
+\end_layout
+
+\end_deeper
+\begin_layout For Loop
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Nested Loops
 \end_layout
 
 \end_inset
