@@ -35,7 +35,7 @@ Style Algorithm
   EndArgument
   AutoNests
     Statement, Function, Procedure, For, Loop, Repeat, While, If,
-    Ensure, Require, Call
+    Ensure, Require, Call, Statex
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -462,6 +462,25 @@ Style Return
   EndFont
   Margin Dynamic
 End
+#
+# This implements Statex, which creates an unnumbered line in an algorithm.
+#
+Style Statex
+  Category "Miscellaneous"
+  LatexType Command
+  LatexName "Statex"
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "<inserted unnumbered blank line>"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+  KeepEmpty 1
+End
 \end_local_layout
 \language english
 \language_package default
@@ -600,6 +619,10 @@ I'm home
 
 \begin_layout Statement
 Bye 
+\end_layout
+
+\begin_layout Statex
+
 \end_layout
 
 \begin_layout Statement
