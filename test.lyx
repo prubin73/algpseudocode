@@ -33,7 +33,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, "For Loop", "Repeat Block", "Loop"
+    Statement, "For", "Repeat", "Loop"
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -52,7 +52,7 @@ Style Statement
   LatexType Command
   LatexName "State"
   IsAutoNestedBy
-    Algorithm, "For Loop", "Repeat Block", "Loop"
+    Algorithm, "For", "Repeat", "Loop"
   EndIsAutoNestedBy
   LabelType Static
   LabelString "Statement:  "
@@ -72,9 +72,11 @@ InsetLayout "Flex:Code comment"
   LatexName "Comment"
   LabelString "comment"
 End
+#
 # This style implements for loops.
-Style "For Loop"
-  Category "Pseudocode"
+#
+Style "For"
+  Category "Flow Control"
   LatexType Environment
   LatexName "forloop"
   Preamble
@@ -102,19 +104,20 @@ Style "For Loop"
     Mandatory 1
   EndArgument
 End
-# This implements repeat blocks.
-Style "Repeat Block"
-  Category "Pseudocode"
+#
+# This implements plain loops.
+#
+Style "Loop"
+  Category "Flow Control"
   LatexType Environment
-  LatexName "repeatblock"
+  LatexName "loopblock"
   Preamble
-    \newsavebox{\untilthis}
-    \newenvironment{repeatblock}[1]{\sbox{\untilthis}{#1}\Repeat}{\Until{\usebox{\untilthis}}}
+    \newenvironment{loopblock}{\Loop}{\EndLoop}
   EndPreamble
   LabelType Above
-  LabelString "Begin repeat"
+  LabelString "Begin loop"
   EndLabelType Static
-  EndLabelString "End repeat"
+  EndLabelString "End loop"
   LabelFont
     Color green
     Series bold
@@ -133,18 +136,21 @@ Style "Repeat Block"
     Mandatory 1
   EndArgument
 End
-# This implements plain loops.
-Style "Loop"
-  Category "Pseudocode"
+#
+# This implements repeat blocks.
+#
+Style "Repeat"
+  Category "Flow Control"
   LatexType Environment
-  LatexName "loopblock"
+  LatexName "repeatblock"
   Preamble
-    \newenvironment{loopblock}{\Loop}{\EndLoop}
+    \newsavebox{\untilthis}
+    \newenvironment{repeatblock}[1]{\sbox{\untilthis}{#1}\Repeat}{\Until{\usebox{\untilthis}}}
   EndPreamble
   LabelType Above
-  LabelString "Begin loop"
+  LabelString "Begin repeat"
   EndLabelType Static
-  EndLabelString "End loop"
+  EndLabelString "End repeat"
   LabelFont
     Color green
     Series bold
@@ -346,7 +352,7 @@ status open
 Get ready
 \end_layout
 
-\begin_layout For Loop
+\begin_layout For
 \begin_inset Argument 1
 status collapsed
 
@@ -382,7 +388,7 @@ Step 2
 \end_layout
 
 \end_deeper
-\begin_layout For Loop
+\begin_layout For
 
 \end_layout
 
@@ -433,7 +439,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Repeat Block
+\begin_layout Repeat
 \begin_inset Argument 1
 status open
 
@@ -459,7 +465,7 @@ x
 \end_layout
 
 \end_deeper
-\begin_layout Repeat Block
+\begin_layout Repeat
 
 \end_layout
 
@@ -577,14 +583,14 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout For Loop
+\begin_layout For
 \begin_inset Separator plain
 \end_inset
 
 
 \end_layout
 
-\begin_layout For Loop
+\begin_layout For
 \begin_inset Argument 1
 status open
 
@@ -601,7 +607,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Repeat Block
+\begin_layout Repeat
 \begin_inset Argument 1
 status open
 
@@ -630,12 +636,12 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Repeat Block
+\begin_layout Repeat
 
 \end_layout
 
 \end_deeper
-\begin_layout For Loop
+\begin_layout For
 
 \end_layout
 
