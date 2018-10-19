@@ -34,7 +34,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, For, Repeat, Loop, If
+    Statement, For, Loop, Repeat, While, If
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -53,7 +53,7 @@ Style Statement
   LatexType Command
   LatexName "State"
   IsAutoNestedBy
-    Algorithm, "For", "Repeat", "Loop"
+    Algorithm, For, Repeat, Loop, While, If, Else, "Else if"
   EndIsAutoNestedBy
   LabelType Static
   LabelString "Statement:  "
@@ -169,6 +169,38 @@ Style "Repeat"
     LabelString "termination condition"
     MenuString "Set termination condition"
     Tooltip "Specify the conditions for terminating the loop"
+    Mandatory 1
+  EndArgument
+End
+#
+# This implements while loops.
+#
+Style "While"
+  Category "Looping"
+  LatexType Environment
+  LatexName "whileloop"
+  Preamble
+    \newenvironment{whileloop}[1]{\While{#1}}{\EndWhile}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin while"
+  EndLabelType Static
+  EndLabelString "End while"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "loop condition"
+    MenuString "Set loop condition"
+    Tooltip "Specify the conditions for iterating"
     Mandatory 1
   EndArgument
 End
@@ -732,6 +764,42 @@ status open
 
 \end_deeper
 \begin_layout Repeat
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout While
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+>0.1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+\begin_inset Formula $x\leftarrow x/2$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout While
 
 \end_layout
 
