@@ -34,7 +34,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, For, Loop, Repeat, While, If
+    Statement, Function, Procedure, For, Loop, Repeat, While, If
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -44,6 +44,82 @@ Style Algorithm
     Color green
     Series bold
   EndFont
+End
+#
+# This implements functions.
+#
+Style "Function"
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "pseudofunction"
+  Preamble
+    \newenvironment{pseudofunction}[2]{\Function{#1}{#2}}{\EndFunction}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin function"
+  EndLabelType Static
+  EndLabelString "End function"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "name"
+    MenuString "Enter the function name"
+    Tooltip "Specify a name for the function"
+    Mandatory 1
+  EndArgument
+  Argument 2
+    LabelString "parameters"
+    MenuString "List the arguments of the function"
+    Tooltip "Specify the arguments of the function"
+    Mandatory 1
+  EndArgument
+End
+#
+# This implements procedures.
+#
+Style "Procedure"
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "pseudoproc"
+  Preamble
+    \newenvironment{pseudoproc}[2]{\Procedure{#1}{#2}}{\EndProcedure}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin procedure"
+  EndLabelType Static
+  EndLabelString "End procedure"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "name"
+    MenuString "Enter the procedure name"
+    Tooltip "Specify a name for the procedure"
+    Mandatory 1
+  EndArgument
+  Argument 2
+    LabelString "parameters"
+    MenuString "List the arguments of the procedure"
+    Tooltip "Specify the arguments of the procedure"
+    Mandatory 1
+  EndArgument
 End
 #
 # Statement is how you enter typical pseudocode statements.
@@ -944,6 +1020,188 @@ If Block
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Function
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gazinta
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x,y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+return 
+\begin_inset Formula $x/y$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Function
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Procedure
+\noindent
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Invert
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+\begin_inset Formula $x\leftarrow\frac{1}{x}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Procedure
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Procedure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
