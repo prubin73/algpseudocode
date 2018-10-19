@@ -193,7 +193,7 @@ Style "If"
     Series bold
   EndFont
   AutoNests
-    Statement, Else
+    Statement, Else, "Else if"
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -231,6 +231,38 @@ Style "Else"
     If
   EndIsAutoNestedBy
   KeepEmpty 1
+End
+#
+# This implements "else if".
+#
+Style "Else if"
+  Category "Conditional"
+  LatexType Environment
+  LatexName "elseifblock"
+  Preamble
+    \newenvironment{elseifblock}[1]{\ElsIf{#1}}{}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin else if"
+  EndLabelType Static
+  EndLabelString "End else if"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement
+  EndAutoNests
+  IsAutoNestedBy
+    If
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "condition"
+    MenuString "Set the condition"
+    Tooltip "Specify the condition for executing subsequent instructions"
+    Mandatory 1
+  EndArgument
 End
 \end_local_layout
 \language english
@@ -779,6 +811,36 @@ status open
 \begin_deeper
 \begin_layout Statement
 do something silly
+\end_layout
+
+\begin_layout Else if
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x<\rho$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+pause for breath
+\end_layout
+
+\begin_layout Statement
+get a grip
+\end_layout
+
+\end_deeper
+\begin_layout Else if
+
 \end_layout
 
 \begin_layout Else
