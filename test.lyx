@@ -16,8 +16,9 @@
 Format 66
 Preamble
     \usepackage{algpseudocode}
-%    \newcommand{\forblock}[2]{\For{#1}\\#2\EndFor}
 EndPreamble
+#
+# ----- Basics -----
 #
 # The Algorithm environment is the container for all pseudocode.
 #
@@ -33,7 +34,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    "Statement", "For", "If" "Repeat", "Loop"
+    Statement, For, Repeat, Loop, If
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -73,10 +74,12 @@ InsetLayout "Flex:Code comment"
   LabelString "comment"
 End
 #
+# ----- LOOPING -----
+#
 # This style implements for loops.
 #
 Style "For"
-  Category "Flow Control"
+  Category "Looping"
   LatexType Environment
   LatexName "forloop"
   Preamble
@@ -105,42 +108,10 @@ Style "For"
   EndArgument
 End
 #
-# This implements if blocks.
-#
-Style "If"
-  Category "Flow Control"
-  LatexType Environment
-  LatexName "ifblock"
-  Preamble
-    \newenvironment{ifblock}[1]{\If{#1}}{\EndIf}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin if"
-  EndLabelType Static
-  EndLabelString "End if"
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  AutoNests
-    Statement
-  EndAutoNests
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
-  Argument 1
-    LabelString "condition"
-    MenuString "Set the condition"
-    Tooltip "Specify the condition for executing subsequent instructions"
-    Mandatory 1
-  EndArgument
-End
-#
 # This implements plain loops.
 #
 Style "Loop"
-  Category "Flow Control"
+  Category "Looping"
   LatexType Environment
   LatexName "loopblock"
   Preamble
@@ -172,7 +143,7 @@ End
 # This implements repeat blocks.
 #
 Style "Repeat"
-  Category "Flow Control"
+  Category "Looping"
   LatexType Environment
   LatexName "repeatblock"
   Preamble
@@ -200,6 +171,66 @@ Style "Repeat"
     Tooltip "Specify the conditions for terminating the loop"
     Mandatory 1
   EndArgument
+End
+#
+# ----- Conditional code -----
+#
+# This implements if blocks.
+#
+Style "If"
+  Category "Conditional"
+  LatexType Environment
+  LatexName "ifblock"
+  Preamble
+    \newenvironment{ifblock}[1]{\If{#1}}{\EndIf}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin if"
+  EndLabelType Static
+  EndLabelString "End if"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement, Else
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "condition"
+    MenuString "Set the condition"
+    Tooltip "Specify the condition for executing subsequent instructions"
+    Mandatory 1
+  EndArgument
+End
+#
+# This implements else blocks.
+#
+Style "Else"
+  Category "Conditional"
+  LatexType Environment
+  LatexName "elseblock"
+  Preamble
+    \newenvironment{elseblock}{\Else}{}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin else"
+  EndLabelType Static
+  EndLabelString "End else"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement
+  EndAutoNests
+  IsAutoNestedBy
+    If
+  EndIsAutoNestedBy
+  KeepEmpty 1
 End
 \end_local_layout
 \language english
@@ -748,6 +779,20 @@ status open
 \begin_deeper
 \begin_layout Statement
 do something silly
+\end_layout
+
+\begin_layout Else
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+do something really silly
+\end_layout
+
+\end_deeper
+\begin_layout Else
+
 \end_layout
 
 \end_deeper
