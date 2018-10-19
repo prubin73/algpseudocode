@@ -35,7 +35,7 @@ Style Algorithm
   EndArgument
   AutoNests
     Statement, Function, Procedure, For, Loop, Repeat, While, If,
-    Ensure, Require
+    Ensure, Require, Call
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -377,6 +377,33 @@ End
 #
 # ----- Miscellaneous -----
 #
+#
+# This implements a procedure call.
+#
+Style Call
+  Category "Miscellaneous"
+  LatexType Command
+  LatexName "statecall"
+  Preamble
+    \newcommand{\statecall}[2]{\State \Call{#1}{#2}}
+  EndPreamble
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Call:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+  Argument 1
+    LabelString "name"
+    MenuString "Insert procedure name"
+    Tooltip "Specify the name of the procedure to call"
+    Mandatory 1
+  EndArgument
+End
 #
 # This implements the Ensure statement.
 #
@@ -1261,6 +1288,23 @@ status open
 
 \end_layout
 
+\begin_layout Call
+\begin_inset Formula $\exp(-1)$
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Invert
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Algorithm
 
@@ -1285,12 +1329,6 @@ Procedure
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-return
 \end_layout
 
 \end_body
