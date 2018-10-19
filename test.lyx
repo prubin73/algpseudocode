@@ -33,7 +33,7 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, "For", "Repeat", "Loop"
+    "Statement", "For", "If" "Repeat", "Loop"
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -101,6 +101,38 @@ Style "For"
     LabelString "loop condition"
     MenuString "Set loop condition"
     Tooltip "Specify the conditions for iterating"
+    Mandatory 1
+  EndArgument
+End
+#
+# This implements if blocks.
+#
+Style "If"
+  Category "Flow Control"
+  LatexType Environment
+  LatexName "ifblock"
+  Preamble
+    \newenvironment{ifblock}[1]{\If{#1}}{\EndIf}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin if"
+  EndLabelType Static
+  EndLabelString "End if"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    Statement
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "condition"
+    MenuString "Set the condition"
+    Tooltip "Specify the condition for executing subsequent instructions"
     Mandatory 1
   EndArgument
 End
@@ -663,6 +695,80 @@ Nested Loops
 \end_layout
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+read 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\begin_layout If
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x>\Gamma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Statement
+do something silly
+\end_layout
+
+\end_deeper
+\begin_layout If
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+If Block
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
