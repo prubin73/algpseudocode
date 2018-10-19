@@ -34,7 +34,8 @@ Style Algorithm
     Mandatory 0
   EndArgument
   AutoNests
-    Statement, Function, Procedure, For, Loop, Repeat, While, If
+    Statement, Function, Procedure, For, Loop, Repeat, While, If,
+    Ensure, Require
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -64,7 +65,7 @@ Style Function
     Series bold
   EndFont
   AutoNests
-    Statement, Return
+    Statement, Return, Ensure, Require
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -102,7 +103,7 @@ Style Procedure
     Series bold
   EndFont
   AutoNests
-    Statement
+    Statement, Ensure, Require
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -120,28 +121,6 @@ Style Procedure
     Tooltip "Specify the arguments of the procedure"
     Mandatory 1
   EndArgument
-End
-#
-# The Return style inserts a statement beginning with "return"
-# in bold. (This is not part of the algpseudocode package.)
-#
-Style Return
-  Category "Pseudocode"
-  LatexType Command
-  LatexName "returnstmt"
-  Preamble
-    \newcommand{\returnstmt}[1]{\State \textbf{return} #1}
-  EndPreamble
-  IsAutoNestedBy
-    Function
-  EndIsAutoNestedBy
-  LabelType Static
-  LabelString "Return:  "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  Margin Dynamic
 End
 #
 # Statement is how you enter typical pseudocode statements.
@@ -395,6 +374,67 @@ Style "Else if"
     Mandatory 1
   EndArgument
 End
+#
+# ----- Miscellaneous -----
+#
+#
+# This implements the Ensure statement.
+#
+Style Ensure
+  Category "Miscellaneous"
+  LatexType Command
+  LatexName "Ensure"
+  IsAutoNestedBy
+    Algorithm, Function, Procedure
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Ensure:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
+# This implements the Require statement
+#
+Style Require
+  Category "Miscellaneous"
+  LatexType Command
+  LatexName "Require"
+  IsAutoNestedBy
+    Algorithm, Function, Procedure
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Require:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
+# The Return style inserts a statement beginning with "return"
+# in bold. (This is not part of the algpseudocode package.)
+#
+Style Return
+  Category "Miscellaneous"
+  LatexType Command
+  LatexName "returnstmt"
+  Preamble
+    \newcommand{\returnstmt}[1]{\State \textbf{return} #1}
+  EndPreamble
+  IsAutoNestedBy
+    Function
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Return:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
 \end_local_layout
 \language english
 \language_package default
@@ -509,6 +549,14 @@ status open
 \end_layout
 
 \begin_deeper
+\begin_layout Require
+having a home
+\end_layout
+
+\begin_layout Ensure
+being heard
+\end_layout
+
 \begin_layout Statement
 Hi 
 \begin_inset Flex Code comment
