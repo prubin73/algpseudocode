@@ -48,7 +48,7 @@ End
 #
 # This implements functions.
 #
-Style "Function"
+Style Function
   Category "Pseudocode"
   LatexType Environment
   LatexName "pseudofunction"
@@ -64,7 +64,7 @@ Style "Function"
     Series bold
   EndFont
   AutoNests
-    Statement
+    Statement, Return
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -86,7 +86,7 @@ End
 #
 # This implements procedures.
 #
-Style "Procedure"
+Style Procedure
   Category "Pseudocode"
   LatexType Environment
   LatexName "pseudoproc"
@@ -122,6 +122,28 @@ Style "Procedure"
   EndArgument
 End
 #
+# The Return style inserts a statement beginning with "return"
+# in bold. (This is not part of the algpseudocode package.)
+#
+Style Return
+  Category "Pseudocode"
+  LatexType Command
+  LatexName "returnstmt"
+  Preamble
+    \newcommand{\returnstmt}[1]{\State \textbf{return} #1}
+  EndPreamble
+  IsAutoNestedBy
+    Function
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Return:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
 # Statement is how you enter typical pseudocode statements.
 #
 Style Statement
@@ -129,7 +151,8 @@ Style Statement
   LatexType Command
   LatexName "State"
   IsAutoNestedBy
-    Algorithm, For, Repeat, Loop, While, If, Else, "Else if"
+    Algorithm, For, Repeat, Loop, While, If, Else, "Else if",
+    Function, Procedure
   EndIsAutoNestedBy
   LabelType Static
   LabelString "Statement:  "
@@ -154,7 +177,7 @@ End
 #
 # This style implements for loops.
 #
-Style "For"
+Style For
   Category "Looping"
   LatexType Environment
   LatexName "forloop"
@@ -186,7 +209,7 @@ End
 #
 # This implements plain loops.
 #
-Style "Loop"
+Style Loop
   Category "Looping"
   LatexType Environment
   LatexName "loopblock"
@@ -218,7 +241,7 @@ End
 #
 # This implements repeat blocks.
 #
-Style "Repeat"
+Style Repeat
   Category "Looping"
   LatexType Environment
   LatexName "repeatblock"
@@ -251,7 +274,7 @@ End
 #
 # This implements while loops.
 #
-Style "While"
+Style While
   Category "Looping"
   LatexType Environment
   LatexName "whileloop"
@@ -285,7 +308,7 @@ End
 #
 # This implements if blocks.
 #
-Style "If"
+Style If
   Category "Conditional"
   LatexType Environment
   LatexName "ifblock"
@@ -317,7 +340,7 @@ End
 #
 # This implements else blocks.
 #
-Style "Else"
+Style Else
   Category "Conditional"
   LatexType Environment
   LatexName "elseblock"
@@ -1081,8 +1104,14 @@ status open
 
 \begin_deeper
 \begin_layout Statement
-return 
-\begin_inset Formula $x/y$
+\begin_inset Formula $z\leftarrow x/y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Return
+\begin_inset Formula $z$
 \end_inset
 
 
@@ -1208,6 +1237,12 @@ Procedure
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+return
 \end_layout
 
 \end_body
