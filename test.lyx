@@ -32,9 +32,11 @@ Style Algorithm
     MenuString "Set line numbering"
     Tooltip "0 for no line number, n for line numbers in multiples of n"
     Mandatory 0
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
   AutoNests
-    Statement, Function, Procedure, For, Loop, Repeat, While, If,
+    State, Function, Procedure, For, Loop, Repeat, While, If,
     Ensure, Require, Call, Statex
   EndAutoNests
   LabelType Above
@@ -65,7 +67,7 @@ Style Function
     Series bold
   EndFont
   AutoNests
-    Statement, Return, Ensure, Require
+    State, Return, Ensure, Require
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -76,12 +78,16 @@ Style Function
     MenuString "Enter the function name"
     Tooltip "Specify a name for the function"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
   Argument 2
     LabelString "parameters"
     MenuString "List the arguments of the function"
     Tooltip "Specify the arguments of the function"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -103,7 +109,7 @@ Style Procedure
     Series bold
   EndFont
   AutoNests
-    Statement, Ensure, Require
+    State, Ensure, Require
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -114,18 +120,22 @@ Style Procedure
     MenuString "Enter the procedure name"
     Tooltip "Specify a name for the procedure"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
   Argument 2
     LabelString "parameters"
     MenuString "List the arguments of the procedure"
     Tooltip "Specify the arguments of the procedure"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
-# Statement is how you enter typical pseudocode statements.
+# State is how you enter typical pseudocode statements.
 #
-Style Statement
+Style State
   Category "Pseudocode"
   LatexType Command
   LatexName "State"
@@ -134,7 +144,7 @@ Style Statement
     Function, Procedure
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "Statement:  "
+  LabelString "State:  "
   LabelFont
     Color green
     Series bold
@@ -172,7 +182,7 @@ Style For
     Series bold
   EndFont
   AutoNests
-    Statement
+    State
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -183,6 +193,8 @@ Style For
     MenuString "Set loop condition"
     Tooltip "Specify the conditions for iterating"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -204,7 +216,7 @@ Style Loop
     Series bold
   EndFont
   AutoNests
-    Statement
+    State
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -215,6 +227,8 @@ Style Loop
     MenuString "Set termination condition"
     Tooltip "Specify the conditions for terminating the loop"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -237,7 +251,7 @@ Style Repeat
     Series bold
   EndFont
   AutoNests
-    Statement
+    State
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -248,6 +262,8 @@ Style Repeat
     MenuString "Set termination condition"
     Tooltip "Specify the conditions for terminating the loop"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -269,7 +285,7 @@ Style While
     Series bold
   EndFont
   AutoNests
-    Statement
+    State
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -280,6 +296,8 @@ Style While
     MenuString "Set loop condition"
     Tooltip "Specify the conditions for iterating"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -303,7 +321,7 @@ Style If
     Series bold
   EndFont
   AutoNests
-    Statement, Else, "Else if"
+    State, Else, "Else if"
   EndAutoNests
   IsAutoNestedBy
     Algorithm
@@ -314,6 +332,8 @@ Style If
     MenuString "Set the condition"
     Tooltip "Specify the condition for executing subsequent instructions"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -335,7 +355,7 @@ Style Else
     Series bold
   EndFont
   AutoNests
-    Statement
+    State
   EndAutoNests
   IsAutoNestedBy
     If
@@ -361,7 +381,7 @@ Style "Else if"
     Series bold
   EndFont
   AutoNests
-    Statement
+    State
   EndAutoNests
   IsAutoNestedBy
     If
@@ -372,6 +392,8 @@ Style "Else if"
     MenuString "Set the condition"
     Tooltip "Specify the condition for executing subsequent instructions"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -402,6 +424,16 @@ Style Call
     MenuString "Insert procedure name"
     Tooltip "Specify the name of the procedure to call"
     Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+  Argument 2
+    LabelString "arguments"
+    MenuSTring "Insert arguments"
+    Tooltip "Specify arguments for the call"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
   EndArgument
 End
 #
@@ -473,7 +505,7 @@ Style Statex
     Algorithm
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "<inserted unnumbered blank line>"
+  LabelString "<unnumbered blank line>"
   LabelFont
     Color green
     Series bold
@@ -603,7 +635,7 @@ having a home
 being heard
 \end_layout
 
-\begin_layout Statement
+\begin_layout State
 Hi 
 \begin_inset Flex Code comment
 status open
@@ -617,7 +649,7 @@ I'm home
 
 \end_layout
 
-\begin_layout Statement
+\begin_layout State
 Bye 
 \end_layout
 
@@ -625,7 +657,7 @@ Bye
 
 \end_layout
 
-\begin_layout Statement
+\begin_layout State
 See ya
 \end_layout
 
@@ -672,7 +704,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 Get ready
 \end_layout
 
@@ -703,11 +735,11 @@ for each index
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 Step 1
 \end_layout
 
-\begin_layout Statement
+\begin_layout State
 Step 2
 \end_layout
 
@@ -784,7 +816,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 x
 \end_layout
 
@@ -848,11 +880,11 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 Do this
 \end_layout
 
-\begin_layout Statement
+\begin_layout State
 Do that
 \end_layout
 
@@ -952,7 +984,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 \begin_inset Formula $x\leftarrow x+1$
 \end_inset
 
@@ -988,7 +1020,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 \begin_inset Formula $x\leftarrow x/2$
 \end_inset
 
@@ -1049,7 +1081,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 read 
 \begin_inset Formula $x$
 \end_inset
@@ -1074,7 +1106,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 do something silly
 \end_layout
 
@@ -1095,11 +1127,11 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 pause for breath
 \end_layout
 
-\begin_layout Statement
+\begin_layout State
 get a grip
 \end_layout
 
@@ -1113,7 +1145,7 @@ get a grip
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 do something really silly
 \end_layout
 
@@ -1201,7 +1233,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 \begin_inset Formula $z\leftarrow x/y$
 \end_inset
 
@@ -1234,10 +1266,6 @@ Function
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1299,7 +1327,7 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout Statement
+\begin_layout State
 \begin_inset Formula $x\leftarrow\frac{1}{x}$
 \end_inset
 
@@ -1312,15 +1340,24 @@ status open
 \end_layout
 
 \begin_layout Call
-\begin_inset Formula $\exp(-1)$
-\end_inset
-
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 Invert
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\exp(-1)$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1346,6 +1383,113 @@ Procedure
 \end_layout
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout State
+do stuff
+\end_layout
+
+\begin_layout Procedure
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+drop
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout State
+discard x
+\end_layout
+
+\end_deeper
+\begin_layout Procedure
+
+\end_layout
+
+\begin_layout State
+deep breath
+\end_layout
+
+\begin_layout Call
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+drop
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Junk
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
