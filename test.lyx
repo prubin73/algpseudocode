@@ -18,7 +18,7 @@ Preamble
     \usepackage{algpseudocode}
 EndPreamble
 #
-# ----- Basics -----
+# ----- Containers -----
 #
 # The Algorithm environment is the container for all pseudocode.
 #
@@ -133,36 +133,7 @@ Style Procedure
   EndArgument
 End
 #
-# State is how you enter typical pseudocode statements.
-#
-Style State
-  Category "Pseudocode"
-  LatexType Command
-  LatexName "State"
-  IsAutoNestedBy
-    Algorithm, For, Repeat, Loop, While, If, Else, "Else if",
-    Function, Procedure
-  EndIsAutoNestedBy
-  LabelType Static
-  LabelString "State:  "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  Margin Dynamic
-End
-#
-# The "Code comment" inset allows you to add comments to other
-# pseudocode entries (such as statements).
-#
-InsetLayout "Flex:Code comment"
-  LyxType Custom
-  LatexType Command
-  LatexName "Comment"
-  LabelString "comment"
-End
-#
-# ----- LOOPING -----
+# ----- Looping -----
 #
 # This style implements for loops.
 #
@@ -397,13 +368,13 @@ Style "Else if"
   EndArgument
 End
 #
-# ----- Miscellaneous -----
+# ----- Statements -----
 #
 #
 # This implements a procedure call.
 #
 Style Call
-  Category "Miscellaneous"
+  Category "Statements"
   LatexType Command
   LatexName "statecall"
   Preamble
@@ -437,10 +408,29 @@ Style Call
   EndArgument
 End
 #
+# This implements Statex, which creates an unnumbered line in an algorithm.
+#
+Style "Empty statement"
+  Category "Statements"
+  LatexType Command
+  LatexName "Statex"
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "<unnumbered blank line>"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+  KeepEmpty 1
+End
+#
 # This implements the Ensure statement.
 #
 Style Ensure
-  Category "Miscellaneous"
+  Category "Statements"
   LatexType Command
   LatexName "Ensure"
   IsAutoNestedBy
@@ -458,7 +448,7 @@ End
 # This implements the Require statement
 #
 Style Require
-  Category "Miscellaneous"
+  Category "Statements"
   LatexType Command
   LatexName "Require"
   IsAutoNestedBy
@@ -477,7 +467,7 @@ End
 # in bold. (This is not part of the algpseudocode package.)
 #
 Style Return
-  Category "Miscellaneous"
+  Category "Statements"
   LatexType Command
   LatexName "returnstmt"
   Preamble
@@ -495,23 +485,35 @@ Style Return
   Margin Dynamic
 End
 #
-# This implements Statex, which creates an unnumbered line in an algorithm.
+# State is how you enter typical pseudocode statements.
 #
-Style Statex
-  Category "Miscellaneous"
+Style State
+  Category "Statements"
   LatexType Command
-  LatexName "Statex"
+  LatexName "State"
   IsAutoNestedBy
-    Algorithm
+    Algorithm, For, Repeat, Loop, While, If, Else, "Else if",
+    Function, Procedure
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "<unnumbered blank line>"
+  LabelString "State:  "
   LabelFont
     Color green
     Series bold
   EndFont
   Margin Dynamic
-  KeepEmpty 1
+End
+#
+#  ----- Insets -----
+#
+# The "Code comment" inset allows you to add comments to other
+# pseudocode entries (such as statements).
+#
+InsetLayout "Flex:Code comment"
+  LyxType Custom
+  LatexType Command
+  LatexName "Comment"
+  LabelString "comment"
 End
 \end_local_layout
 \language english
@@ -653,7 +655,7 @@ I'm home
 Bye 
 \end_layout
 
-\begin_layout Statex
+\begin_layout Empty statement
 
 \end_layout
 
@@ -1226,10 +1228,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1450,7 +1448,7 @@ discard x
 \end_layout
 
 \begin_layout State
-deep breath
+Deep breath
 \end_layout
 
 \begin_layout Call
@@ -1468,7 +1466,7 @@ drop
 status open
 
 \begin_layout Plain Layout
-1
+2
 \end_layout
 
 \end_inset
