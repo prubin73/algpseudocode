@@ -1,0 +1,829 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+pseudocode
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Pseudocode in \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Author
+Paul A.
+ Rubin (rubin@msu.edu)
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+algorithmicx.sty
+\family default
+ \SpecialChar LaTeX
+ package provides commands for typesetting algorithms written in pseudocode.
+ This document describes a \SpecialChar LyX
+ module that (hopefully) facilitates entering
+ such listings in \SpecialChar LyX
+.
+ It uses the 
+\family typewriter
+algpseudocode.sty
+\family default
+ style file, which is part of 
+\family typewriter
+algorithmicx.sty
+\family default
+.
+ For details on how the package works, please see section 3.1 of the document
+ file for 
+\family typewriter
+algorithmicx.sty
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Installation
+\end_layout
+
+\begin_layout Standard
+First, of course, you have to install the 
+\family typewriter
+algorithmicx.sty
+\family default
+ package.
+ After that, download the 
+\family typewriter
+pseudocode.module
+\family default
+ file and place it in your local layouts directory.
+ (If you are not sure where that directory is, select 
+\family typewriter
+Help > About \SpecialChar LyX
+
+\family default
+, which will tell you the path for your 
+\begin_inset Quotes eld
+\end_inset
+
+user directory
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The local layouts directory is a child of the user directory.) Once the
+ module is in the local layouts directory, execute 
+\family typewriter
+Tools > Reconfigure
+\family default
+ and restart \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Section
+Usage
+\end_layout
+
+\begin_layout Standard
+In your document, go to 
+\family typewriter
+Document > Settings\SpecialChar ldots
+ > Modules
+\family default
+, select 
+\begin_inset Quotes eld
+\end_inset
+
+Pseudocode
+\begin_inset Quotes erd
+\end_inset
+
+ and click the Add button, then OK.
+ The module adds a number of paragraph environments to the drop-down list
+ in the tool bar.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Pseudocode
+\begin_inset Quotes erd
+\end_inset
+
+ group contains paragraph environments for algorithms (the 
+\family typewriter
+algorithmic
+\family default
+ environment), functions (the 
+\family typewriter
+function
+\family default
+ block) and procedures (the 
+\family typewriter
+procedure
+\family default
+ block).
+ Functions, procedures and pretty much everything else should be nested
+ inside algorithms.
+ Note that the Algorithm paragraph environment is different from algorithm
+ 
+\emph on
+floats
+\emph default
+ (available as usual via 
+\family typewriter
+Insert > Float > Algorithm
+\family default
+).
+ You may well want to place an algorithmic environment (
+\begin_inset Quotes eld
+\end_inset
+
+paragraph
+\begin_inset Quotes erd
+\end_inset
+
+) inside an algorithmic float.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Looping
+\begin_inset Quotes erd
+\end_inset
+
+ group contains paragraph environments for the various types of loops (
+\begin_inset Quotes eld
+\end_inset
+
+for
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+repeat
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+while
+\begin_inset Quotes erd
+\end_inset
+
+ and a plain 
+\begin_inset Quotes eld
+\end_inset
+
+loop
+\begin_inset Quotes erd
+\end_inset
+
+) supported by the \SpecialChar LaTeX
+ package.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Conditional
+\begin_inset Quotes erd
+\end_inset
+
+ group provides 
+\begin_inset Quotes eld
+\end_inset
+
+if
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+else
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+else if
+\begin_inset Quotes erd
+\end_inset
+
+ paragraph environments.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Statements
+\begin_inset Quotes erd
+\end_inset
+
+ group provides the 
+\begin_inset Quotes eld
+\end_inset
+
+State
+\begin_inset Quotes erd
+\end_inset
+
+ command, which is the style to use for plain statements in a pseudocode
+ listing.
+ It also provides 
+\begin_inset Quotes eld
+\end_inset
+
+Call
+\begin_inset Quotes erd
+\end_inset
+
+ (for calling a procedure or function), 
+\begin_inset Quotes eld
+\end_inset
+
+Ensure
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Require
+\begin_inset Quotes erd
+\end_inset
+
+ (to state conditions for an algorithm), and an environment that inserts
+ a blank line that will not be numbered.
+ In addition, it provides one paragraph style (
+\begin_inset Quotes eld
+\end_inset
+
+Return
+\begin_inset Quotes erd
+\end_inset
+
+) that the 
+\family typewriter
+algpseudocode.sty
+\family default
+ style does not provide.
+ This simply creates a statement that begins with the word 
+\begin_inset Quotes eld
+\end_inset
+
+return
+\begin_inset Quotes erd
+\end_inset
+
+ in bold, after which you can enter a return value (or not).
+\end_layout
+
+\begin_layout Standard
+The module also supports the 
+\family typewriter
+
+\backslash
+Comment
+\family default
+ command, which inserts comments in listings.
+ Because comments are embedded in paragraphs of other types (most typically,
+ though not exclusively, statements), this is implemented not as a paragraph
+ style but as a custom inset.
+ You add a comment using 
+\family typewriter
+Insert > Custom Insets > Code comment
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+There are some details regarding usage that are worth noting.
+\end_layout
+
+\begin_layout Itemize
+Plain statements will automatically nest inside algorithms, functions, procedure
+s, loops and conditional blocks.
+ Other statements will automatically nest in relevant styles, such as return
+ statements automatically nesting in functions.
+ Everything automatically nests inside algorithms.
+ If you need to force something to nest that does not do so automatically
+ (such as a conditional statement inside a loop), use the 
+\begin_inset Quotes eld
+\end_inset
+
+Increase depth
+\begin_inset Quotes erd
+\end_inset
+
+ button on the tool bar or the corresponding command on the 
+\family typewriter
+Edit
+\family default
+ menu.
+\end_layout
+
+\begin_layout Itemize
+Some environments have required or optional arguments.
+ An inset for the first such argument appears automatically.
+ Some environments have a second argument as well.
+ Due to a limitation in \SpecialChar LyX
+, the inset for the second argument does not appear
+ automatically.
+ For instance, when inserting a procedure, the inset for the procedure's
+ name appears automatically, but the inset for the parameters does not.
+ To access the second inset, do one of the following:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+right-click next to the inset and select the entry that describes the argument
+ you need to insert;
+\end_layout
+
+\begin_layout Itemize
+select the 
+\family typewriter
+Insert
+\family default
+ menu and find the correct item to insert; or
+\end_layout
+
+\begin_layout Itemize
+use the accelerator keys to insert it (shown in the Insert menu, probably
+ 
+\family typewriter
+Alt+A 2
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+Note that math mode can be used in the argument inserts.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When nesting environments (for instance, the 
+\begin_inset Quotes eld
+\end_inset
+
+while
+\begin_inset Quotes erd
+\end_inset
+
+ loop inside the procedure in the example of Euclid's algorithm), be sure
+ to move the cursor out of the argument inset before nesting the inner environme
+nt.
+ You may temporarily see a phantom copy of the outer environment below the
+ inner one before you nest; that extra copy should disappear after you nest
+ the inner environment.
+\end_layout
+
+\begin_layout Itemize
+Labels can be inserted, in the usual way, in any line of a pseudocode listing.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Continue from here.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Standard
+To demonstrate use of the module, we reproduce a number of examples from
+ section 3.1 of the 
+\family typewriter
+algorithmicx
+\family default
+ manual, showing first the original code (in ERT) and then the equivalent
+ \SpecialChar LyX
+ code using the module.
+ By compiling this file to PDF, you can test the correctness of the module
+ code.
+\end_layout
+
+\begin_layout Subsection
+Euclid's algorithm
+\end_layout
+
+\begin_layout Standard
+Raw \SpecialChar LaTeX
+ version:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Procedure{Euclid}{$a,b$}
+\backslash
+Comment{The g.c.d.
+ of a and b}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $r
+\backslash
+gets a 
+\backslash
+bmod b$
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+While{$r
+\backslash
+not=0$}
+\backslash
+Comment{We have the answer if r is 0}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+State $a
+\backslash
+gets b$
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+State $b
+\backslash
+gets r$
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+State $r
+\backslash
+gets a
+\backslash
+bmod b$
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+EndWhile
+\backslash
+label{euclidendwhile}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State 
+\backslash
+textbf{return} $b$
+\backslash
+Comment{The gcd is b}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndProcedure 
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module version:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Last two lines are improperly indented.
+ Why? Where is End algorithm label??
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Procedure
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Euclid
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $a,b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Code comment
+status open
+
+\begin_layout Plain Layout
+The g.c.d of a and b
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout State
+\begin_inset Formula $r\gets a\bmod b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout While
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $r\not=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Code comment
+status open
+
+\begin_layout Plain Layout
+We have the answer if r is 0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout State
+\begin_inset Formula $a\gets b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $b\gets r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $r\gets a\bmod b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "euclidendwhile2"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout While
+
+\end_layout
+
+\begin_layout Return
+\begin_inset Formula $b$
+\end_inset
+
+
+\begin_inset Flex Code comment
+status open
+
+\begin_layout Plain Layout
+The gcd is b
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Procedure
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The labeled lines are 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ref{euclidendwhile}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "euclidendwhile2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ respectively.
+\end_layout
+
+\end_body
+\end_document

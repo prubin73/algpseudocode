@@ -1,0 +1,508 @@
+#\DeclareLyXModule[algpseudocode.sty]{Pseudocode}
+#DescriptionBegin
+# Adds support for pseudocode code listings as defined by the algorithmicx package.
+# For more details, see Pseudocode.lyx.
+# Package(s) required: algorithmicx.sty.
+#DescriptionEnd
+# Author: Paul A. Rubin <rubin@msu.edu>
+Format 66
+Preamble
+    \usepackage{algpseudocode}
+EndPreamble
+#
+# ----- Containers -----
+#
+# The Algorithm environment is the container for all pseudocode.
+#
+Style Algorithm
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "algorithmic"
+  KeepEmpty 1
+  Argument 1
+    LabelString "Line numbering"
+    MenuString "Set line numbering"
+    Tooltip "0 for no line number, n for line numbers in multiples of n"
+    Mandatory 0
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+  AutoNests
+    State, Function, Procedure, For, Loop, Repeat, While, If,
+    Ensure, Require, Call, Statex
+  EndAutoNests
+  LabelType Above
+  LabelString "Begin algorithm"
+  EndLabelType Static
+  EndLabelString "End algorithm"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+End
+#
+# This implements functions.
+#
+Style Function
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "pseudofunction"
+  Preamble
+    \newenvironment{pseudofunction}[2]{\Function{#1}{#2}}{\EndFunction}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin function"
+  EndLabelType Static
+  EndLabelString "End function"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State, Return, Ensure, Require
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "name"
+    MenuString "Enter the function name"
+    Tooltip "Specify a name for the function"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+  Argument 2
+    LabelString "parameters"
+    MenuString "List the arguments of the function"
+    Tooltip "Specify the arguments of the function"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# This implements procedures.
+#
+Style Procedure
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "pseudoproc"
+  Preamble
+    \newenvironment{pseudoproc}[2]{\Procedure{#1}{#2}}{\EndProcedure}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin procedure"
+  EndLabelType Static
+  EndLabelString "End procedure"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State, Ensure, Require, Return
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "name"
+    MenuString "Enter the procedure name"
+    Tooltip "Specify a name for the procedure"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+  Argument 2
+    LabelString "parameters"
+    MenuString "List the arguments of the procedure"
+    Tooltip "Specify the arguments of the procedure"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# ----- Looping -----
+#
+# This style implements for loops.
+#
+Style For
+  Category "Looping"
+  LatexType Environment
+  LatexName "forloop"
+  Preamble
+    \newenvironment{forloop}[1]{\For{#1}}{\EndFor}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin for"
+  EndLabelType Static
+  EndLabelString "End for"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "loop condition"
+    MenuString "Set loop condition"
+    Tooltip "Specify the conditions for iterating"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# This implements plain loops.
+#
+Style Loop
+  Category "Looping"
+  LatexType Environment
+  LatexName "loopblock"
+  Preamble
+    \newenvironment{loopblock}{\Loop}{\EndLoop}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin loop"
+  EndLabelType Static
+  EndLabelString "End loop"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "termination condition"
+    MenuString "Set termination condition"
+    Tooltip "Specify the conditions for terminating the loop"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# This implements repeat blocks.
+#
+Style Repeat
+  Category "Looping"
+  LatexType Environment
+  LatexName "repeatblock"
+  Preamble
+    \newsavebox{\untilthis}
+    \newenvironment{repeatblock}[1]{\sbox{\untilthis}{#1}\Repeat}{\Until{\usebox{\untilthis}}}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin repeat"
+  EndLabelType Static
+  EndLabelString "End repeat"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "termination condition"
+    MenuString "Set termination condition"
+    Tooltip "Specify the conditions for terminating the loop"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# This implements while loops.
+#
+Style While
+  Category "Looping"
+  LatexType Environment
+  LatexName "whileloop"
+  Preamble
+    \newenvironment{whileloop}[1]{\While{#1}}{\EndWhile}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin while"
+  EndLabelType Static
+  EndLabelString "End while"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "loop condition"
+    MenuString "Set loop condition"
+    Tooltip "Specify the conditions for iterating"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# ----- Conditional code -----
+#
+# This implements if blocks.
+#
+Style If
+  Category "Conditional"
+  LatexType Environment
+  LatexName "ifblock"
+  Preamble
+    \newenvironment{ifblock}[1]{\If{#1}}{\EndIf}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin if"
+  EndLabelType Static
+  EndLabelString "End if"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State, Else, "Else if"
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "condition"
+    MenuString "Set the condition"
+    Tooltip "Specify the condition for executing subsequent instructions"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# This implements else blocks.
+#
+Style Else
+  Category "Conditional"
+  LatexType Environment
+  LatexName "elseblock"
+  Preamble
+    \newenvironment{elseblock}{\Else}{}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin else"
+  EndLabelType Static
+  EndLabelString "End else"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State
+  EndAutoNests
+  IsAutoNestedBy
+    If
+  EndIsAutoNestedBy
+  KeepEmpty 1
+#
+# This implements "else if".
+#
+Style "Else if"
+  Category "Conditional"
+  LatexType Environment
+  LatexName "elseifblock"
+  Preamble
+    \newenvironment{elseifblock}[1]{\ElsIf{#1}}{}
+  EndPreamble
+  LabelType Above
+  LabelString "Begin else if"
+  EndLabelType Static
+  EndLabelString "End else if"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  AutoNests
+    State
+  EndAutoNests
+  IsAutoNestedBy
+    If
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "condition"
+    MenuString "Set the condition"
+    Tooltip "Specify the condition for executing subsequent instructions"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# ----- Statements -----
+#
+#
+# This implements a procedure call.
+#
+Style Call
+  Category "Statements"
+  LatexType Command
+  LatexName "statecall"
+  Preamble
+    \newcommand{\statecall}[2]{\State \Call{#1}{#2}}
+  EndPreamble
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Call:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+  Argument 1
+    LabelString "name"
+    MenuString "Insert procedure name"
+    Tooltip "Specify the name of the procedure to call"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+  Argument 2
+    LabelString "arguments"
+    MenuSTring "Insert arguments"
+    Tooltip "Specify arguments for the call"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# This implements Statex, which creates an unnumbered line in an algorithm.
+#
+Style "Empty statement"
+  Category "Statements"
+  LatexType Command
+  LatexName "Statex"
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "<unnumbered blank line>"
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+  KeepEmpty 1
+End
+#
+# This implements the Ensure statement.
+#
+Style Ensure
+  Category "Statements"
+  LatexType Command
+  LatexName "Ensure"
+  IsAutoNestedBy
+    Algorithm, Function, Procedure
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Ensure:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
+# This implements the Require statement
+#
+Style Require
+  Category "Statements"
+  LatexType Command
+  LatexName "Require"
+  IsAutoNestedBy
+    Algorithm, Function, Procedure
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Require:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
+# The Return style inserts a statement beginning with "return"
+# in bold. (This is not part of the algpseudocode package.)
+#
+Style Return
+  Category "Statements"
+  LatexType Command
+  LatexName "returnstmt"
+  Preamble
+    \newcommand{\returnstmt}[1]{\State \textbf{return} #1}
+  EndPreamble
+  IsAutoNestedBy
+    Function, Procedure
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Return:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
+# State is how you enter typical pseudocode statements.
+#
+Style State
+  Category "Statements"
+  LatexType Command
+  LatexName "State"
+  IsAutoNestedBy
+    Algorithm, For, Repeat, Loop, While, If, Else, "Else if",
+    Function, Procedure
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "State:  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
+#  ----- Insets -----
+#
+# The "Code comment" inset allows you to add comments to other
+# pseudocode entries (such as statements).
+#
+InsetLayout "Flex:Code comment"
+  LyxType Custom
+  LatexType Command
+  LatexName "Comment"
+  LabelString "comment"
+End
