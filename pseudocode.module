@@ -324,6 +324,7 @@ Style Else
     If
   EndIsAutoNestedBy
   KeepEmpty 1
+End
 #
 # This implements "else if".
 #
