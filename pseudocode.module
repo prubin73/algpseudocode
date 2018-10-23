@@ -28,8 +28,9 @@ Style Algorithm
     AutoInsert 1
   EndArgument
   AutoNests
-    State, Function, Procedure, For, Loop, Repeat, While, If,
-    Ensure, Require, Call, Statex
+    State, Function, EndFunction, Procedure, EndProcedure,
+    For, EndFor, Loop, EndLoop, Repeat, Until, While, EndWhile,
+    If, "Else If", Else, EndIf, Ensure, Require, Call, Statex, Return
   EndAutoNests
   LabelType Above
   LabelString "Begin algorithm"
@@ -41,26 +42,19 @@ Style Algorithm
   EndFont
 End
 #
-# This implements functions.
+# These two commands implement functions.
 #
 Style Function
   Category "Pseudocode"
-  LatexType Environment
-  LatexName "pseudofunction"
-  Preamble
-    \newenvironment{pseudofunction}[2]{\Function{#1}{#2}}{\EndFunction}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin function"
-  EndLabelType Static
-  EndLabelString "End function"
+  LatexType Command
+  LatexName "Function"
+  LabelType Static
+  LabelString "Function "
+  Margin Dynamic
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State, Return, Ensure, Require
-  EndAutoNests
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
@@ -82,27 +76,36 @@ Style Function
     AutoInsert 1
   EndArgument
 End
-#
-# This implements procedures.
-#
-Style Procedure
+Style "EndFunction"
   Category "Pseudocode"
-  LatexType Environment
-  LatexName "pseudoproc"
-  Preamble
-    \newenvironment{pseudoproc}[2]{\Procedure{#1}{#2}}{\EndProcedure}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin procedure"
-  EndLabelType Static
-  EndLabelString "End procedure"
+  LatexType Command
+  LatexName "EndFunction"
+  LabelType Static
+  LabelString "End Function"
+  Margin Dynamic
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State, Ensure, Require, Return
-  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+#
+# These two commands implement procedures.
+#
+Style Procedure
+  Category "Pseudocode"
+  LatexType Command
+  LatexName "Procedure"
+  LabelType Static
+  LabelString "Procedure "
+  Margin Dynamic
+  LabelFont
+    Color green
+    Series bold
+  EndFont
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
@@ -124,29 +127,38 @@ Style Procedure
     AutoInsert 1
   EndArgument
 End
+Style "EndProcedure"
+  Category "Pseudocode"
+  LatexType Command
+  LatexName "EndProcedure"
+  LabelType Static
+  LabelString "End Procedure"
+  Margin Dynamic
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
 #
 # ----- Looping -----
 #
-# This style implements for loops.
+# These two commands implement for loops.
 #
 Style For
   Category "Looping"
-  LatexType Environment
-  LatexName "forloop"
-  Preamble
-    \newenvironment{forloop}[1]{\For{#1}}{\EndFor}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin for"
-  EndLabelType Static
-  EndLabelString "End for"
+  LatexType Command
+  LatexName "For"
+  LabelType Static
+  Margin Dynamic
+  LabelString "For "
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State
-  EndAutoNests
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
@@ -160,62 +172,87 @@ Style For
     AutoInsert 1
   EndArgument
 End
+Style "EndFor"
+  Category "Looping"
+  LatexType Command
+  LatexName "EndFor"
+  LabelType Static
+  LabelString "End For"
+  Margin Dynamic
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
 #
-# This implements plain loops.
+# These two commands implement plain loops.
 #
 Style Loop
   Category "Looping"
-  LatexType Environment
-  LatexName "loopblock"
-  Preamble
-    \newenvironment{loopblock}{\Loop}{\EndLoop}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin loop"
-  EndLabelType Static
-  EndLabelString "End loop"
+  LatexType Command
+  LatexName "Loop"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Loop "
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State
-  EndAutoNests
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
   KeepEmpty 1
-  Argument 1
-    LabelString "termination condition"
-    MenuString "Set termination condition"
-    Tooltip "Specify the conditions for terminating the loop"
-    Mandatory 1
-    Decoration conglomerate
-    AutoInsert 1
-  EndArgument
+End
+Style "EndLoop"
+  Category "Looping"
+  LatexType Command
+  LatexName "EndLoop"
+  LabelType Static
+  LabelString "End Loop"
+  Margin Dynamic
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
 End
 #
-# This implements repeat blocks.
+# These two commands implement repeat blocks.
 #
 Style Repeat
   Category "Looping"
-  LatexType Environment
-  LatexName "repeatblock"
-  Preamble
-    \newsavebox{\untilthis}
-    \newenvironment{repeatblock}[1]{\sbox{\untilthis}{#1}\Repeat}{\Until{\usebox{\untilthis}}}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin repeat"
-  EndLabelType Static
-  EndLabelString "End repeat"
+  LatexType Command
+  LatexName "Repeat"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Repeat "
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State
-  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+Style Until
+  Category "Looping"
+  LatexType Command
+  LatexName "Until"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Until "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
@@ -230,26 +267,19 @@ Style Repeat
   EndArgument
 End
 #
-# This implements while loops.
+# These two commands implement while loops.
 #
 Style While
   Category "Looping"
-  LatexType Environment
-  LatexName "whileloop"
-  Preamble
-    \newenvironment{whileloop}[1]{\While{#1}}{\EndWhile}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin while"
-  EndLabelType Static
-  EndLabelString "End while"
+  LatexType Command
+  LatexName "While"
+  LabelType Static
+  Margin Dynamic
+  LabelString "While "
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State
-  EndAutoNests
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
@@ -262,30 +292,39 @@ Style While
     Decoration conglomerate
     AutoInsert 1
   EndArgument
+End
+Style EndWhile
+  Category "Looping"
+  LatexType Command
+  LatexName "EndWhile"
+  LabelType Static
+  Margin Dynamic
+  LabelString "End While "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
 End
 #
 # ----- Conditional code -----
 #
-# This implements if blocks.
+# These commands implement if blocks.
 #
 Style If
   Category "Conditional"
-  LatexType Environment
-  LatexName "ifblock"
-  Preamble
-    \newenvironment{ifblock}[1]{\If{#1}}{\EndIf}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin if"
-  EndLabelType Static
-  EndLabelString "End if"
+  LatexType Command
+  LatexName "If"
+  LabelType Static
+  Margin Dynamic
+  LabelString "If "
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State, Else, "Else if"
-  EndAutoNests
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
@@ -299,53 +338,17 @@ Style If
     AutoInsert 1
   EndArgument
 End
-#
-# This implements else blocks.
-#
-Style Else
-  Category "Conditional"
-  LatexType Environment
-  LatexName "elseblock"
-  Preamble
-    \newenvironment{elseblock}{\Else}{}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin else"
-  EndLabelType Static
-  EndLabelString "End else"
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  AutoNests
-    State
-  EndAutoNests
-  IsAutoNestedBy
-    If
-  EndIsAutoNestedBy
-  KeepEmpty 1
-End
-#
-# This implements "else if".
-#
 Style "Else if"
   Category "Conditional"
-  LatexType Environment
-  LatexName "elseifblock"
-  Preamble
-    \newenvironment{elseifblock}[1]{\ElsIf{#1}}{}
-  EndPreamble
-  LabelType Above
-  LabelString "Begin else if"
-  EndLabelType Static
-  EndLabelString "End else if"
+  LatexType Command
+  LatexName "ElsIf"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Else if "
   LabelFont
     Color green
     Series bold
   EndFont
-  AutoNests
-    State
-  EndAutoNests
   IsAutoNestedBy
     If
   EndIsAutoNestedBy
@@ -358,6 +361,38 @@ Style "Else if"
     Decoration conglomerate
     AutoInsert 1
   EndArgument
+End
+Style Else
+  Category "Conditional"
+  LatexType Command
+  LatexName "Else"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Else "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    If
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+Style EndIf
+  Category "Conditional"
+  LatexType Command
+  LatexName "EndIf"
+  LabelType Static
+  Margin Dynamic
+  LabelString "End If "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    If
+  EndIsAutoNestedBy
+  KeepEmpty 1
 End
 #
 # ----- Statements -----
@@ -376,7 +411,7 @@ Style Call
     Algorithm
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "Call:  "
+  LabelString "Call  "
   LabelFont
     Color green
     Series bold
@@ -426,10 +461,10 @@ Style Ensure
   LatexType Command
   LatexName "Ensure"
   IsAutoNestedBy
-    Algorithm, Function, Procedure
+    Algorithm
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "Ensure:  "
+  LabelString "Ensure  "
   LabelFont
     Color green
     Series bold
@@ -444,10 +479,10 @@ Style Require
   LatexType Command
   LatexName "Require"
   IsAutoNestedBy
-    Algorithm, Function, Procedure
+    Algorithm
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "Require:  "
+  LabelString "Require  "
   LabelFont
     Color green
     Series bold
@@ -466,10 +501,10 @@ Style Return
     \newcommand{\returnstmt}[1]{\State \textbf{return} #1}
   EndPreamble
   IsAutoNestedBy
-    Function, Procedure
+    Algorithm
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "Return:  "
+  LabelString "Return  "
   LabelFont
     Color green
     Series bold
@@ -484,11 +519,10 @@ Style State
   LatexType Command
   LatexName "State"
   IsAutoNestedBy
-    Algorithm, For, Repeat, Loop, While, If, Else, "Else if",
-    Function, Procedure
+    Algorithm
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "State:  "
+  LabelString "State  "
   LabelFont
     Color green
     Series bold
@@ -507,3 +541,4 @@ InsetLayout "Flex:Code comment"
   LatexName "Comment"
   LabelString "comment"
 End
+

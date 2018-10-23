@@ -196,40 +196,11 @@ Pseudocode
 \begin_inset Quotes erd
 \end_inset
 
- group contains paragraph environments for algorithms (the 
-\family typewriter
-algorithmic
-\family default
- environment), functions (the 
-\family typewriter
-function
-\family default
- block) and procedures (the 
-\family typewriter
-procedure
-\family default
- block).
+ group contains a paragraph environment for algorithms and paragraph styles
+ for functions and procedures.
  Functions, procedures and pretty much everything else should be nested
  inside algorithms.
- Note that the Algorithm paragraph environment is different from algorithm
  
-\emph on
-floats
-\emph default
- (available as usual via 
-\family typewriter
-Insert > Float > Algorithm
-\family default
-).
- You may well want to place an algorithmic environment (
-\begin_inset Quotes eld
-\end_inset
-
-paragraph
-\begin_inset Quotes erd
-\end_inset
-
-) inside an algorithmic float.
 \end_layout
 
 \begin_layout Itemize
@@ -241,7 +212,7 @@ Looping
 \begin_inset Quotes erd
 \end_inset
 
- group contains paragraph environments for the various types of loops (
+ group contains paragraph styles for the various types of loops (
 \begin_inset Quotes eld
 \end_inset
 
@@ -253,7 +224,7 @@ for
 \begin_inset Quotes eld
 \end_inset
 
-repeat
+repeat until
 \begin_inset Quotes erd
 \end_inset
 
@@ -265,7 +236,7 @@ while
 \begin_inset Quotes erd
 \end_inset
 
- and a plain 
+ and an indefinite 
 \begin_inset Quotes eld
 \end_inset
 
@@ -310,7 +281,7 @@ else if
 \begin_inset Quotes erd
 \end_inset
 
- paragraph environments.
+ paragraph styles.
 \end_layout
 
 \begin_layout Itemize
@@ -405,13 +376,57 @@ There are some details regarding usage that are worth noting.
 \end_layout
 
 \begin_layout Itemize
-Plain statements will automatically nest inside algorithms, functions, procedure
-s, loops and conditional blocks.
- Other statements will automatically nest in relevant styles, such as return
- statements automatically nesting in functions.
- Everything automatically nests inside algorithms.
- If you need to force something to nest that does not do so automatically
- (such as a conditional statement inside a loop), use the 
+The algorithm 
+\emph on
+paragraph style
+\emph default
+ is separate from algorithm 
+\emph on
+floats
+\emph default
+.
+ If you want an algorithm inside a float, use 
+\family typewriter
+Insert > Float > Algorithm
+\family default
+ to create the float.
+ Inside the float (and outside its label) create a paragraph and choose
+ 
+\family typewriter
+Algorithm
+\family default
+ from the environment list.
+\end_layout
+
+\begin_layout Itemize
+Loops require you to enter two paragraphs, one to start the loop and the
+ other to end it.
+ Functions and procedures behave similarly.
+ The relevant styles are paired in the environment selection list.
+ For instance, to create a for loop, set one paragraph to the 
+\begin_inset Quotes eld
+\end_inset
+
+For
+\begin_inset Quotes erd
+\end_inset
+
+ style and another to the 
+\begin_inset Quotes eld
+\end_inset
+
+EndFor
+\begin_inset Quotes erd
+\end_inset
+
+ style, then insert any code inside the loop in paragraphs between those
+ two.
+\end_layout
+
+\begin_layout Itemize
+Most statements will automatically nest inside algorithms.
+ If you need to force something to nest that does not do so automatically,
+ use the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -427,14 +442,15 @@ Edit
 \end_layout
 
 \begin_layout Itemize
-Some environments have required or optional arguments.
+Some commands (and the algorithm environment) have required or optional
+ arguments.
  An inset for the first such argument appears automatically.
- Some environments have a second argument as well.
  Due to a limitation in \SpecialChar LyX
-, the inset for the second argument does not appear
- automatically.
+, the inset for a second argument (if one exists)
+ does not appear automatically.
  For instance, when inserting a procedure, the inset for the procedure's
- name appears automatically, but the inset for the parameters does not.
+ name appears automatically, but the inset for the parameters of the procedure
+ does not.
  To access the second inset, do one of the following:
 \end_layout
 
@@ -462,42 +478,39 @@ Alt+A 2
 \end_layout
 
 \begin_layout Standard
-Note that math mode can be used in the argument inserts.
+Note that math mode can be used within insets.
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-When nesting environments (for instance, the 
-\begin_inset Quotes eld
-\end_inset
-
-while
-\begin_inset Quotes erd
-\end_inset
-
- loop inside the procedure in the example of Euclid's algorithm), be sure
- to move the cursor out of the argument inset before nesting the inner environme
-nt.
- You may temporarily see a phantom copy of the outer environment below the
- inner one before you nest; that extra copy should disappear after you nest
- the inner environment.
-\end_layout
-
 \begin_layout Itemize
 Labels can be inserted, in the usual way, in any line of a pseudocode listing.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Continue from here.
+Lines in the LyX source code do not indent (other than nesting inside the
+ algorithm delimiters), but the output will indent properly.
 \end_layout
 
+\begin_layout Itemize
+You will frequently want to enter several consecutive statements.
+ The LyX function 
+\begin_inset Quotes eld
 \end_inset
 
+paragraph-break inverse
+\begin_inset Quotes erd
+\end_inset
 
+ (bound to Alt+Return in the default cua bind file) will start a new statement.
+ This also works for other styles introduced by the module, but 
+\begin_inset Quotes eld
+\end_inset
+
+State
+\begin_inset Quotes erd
+\end_inset
+
+ is the only style you are likely to want to apply to consecutive paragraphs.
 \end_layout
 
 \begin_layout Section
@@ -633,18 +646,14 @@ end{algorithmic}
 \end_layout
 
 \begin_layout Standard
-Module version:
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Last two lines are improperly indented.
- Why? Where is End algorithm label??
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Module version:
 \end_layout
 
 \begin_layout Algorithm
@@ -684,12 +693,13 @@ status open
 
 \end_inset
 
-
+ 
 \begin_inset Flex Code comment
 status open
 
 \begin_layout Plain Layout
-The g.c.d of a and b
+The g.c.d.
+ of a and b
 \end_layout
 
 \end_inset
@@ -697,7 +707,6 @@ The g.c.d of a and b
 
 \end_layout
 
-\begin_deeper
 \begin_layout State
 \begin_inset Formula $r\gets a\bmod b$
 \end_inset
@@ -718,7 +727,7 @@ status open
 
 \end_inset
 
-
+ 
 \begin_inset Flex Code comment
 status open
 
@@ -731,7 +740,6 @@ We have the answer if r is 0
 
 \end_layout
 
-\begin_deeper
 \begin_layout State
 \begin_inset Formula $a\gets b$
 \end_inset
@@ -753,7 +761,7 @@ We have the answer if r is 0
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout EndWhile
 \begin_inset CommandInset label
 LatexCommand label
 name "euclidendwhile2"
@@ -763,16 +771,11 @@ name "euclidendwhile2"
 
 \end_layout
 
-\end_deeper
-\begin_layout While
-
-\end_layout
-
 \begin_layout Return
 \begin_inset Formula $b$
 \end_inset
 
-
+ 
 \begin_inset Flex Code comment
 status open
 
@@ -785,16 +788,12 @@ The gcd is b
 
 \end_layout
 
-\end_deeper
-\begin_layout Procedure
+\begin_layout EndProcedure
 
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
+\begin_layout Algorithm
 
 \end_layout
 
@@ -823,6 +822,971 @@ noprefix "false"
 \end_inset
 
  respectively.
+\end_layout
+
+\begin_layout Subsection
+For block
+\end_layout
+
+\begin_layout Standard
+Raw \SpecialChar LaTeX
+ version:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State $sum
+\backslash
+gets 0$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+For{$i
+\backslash
+gets 1, n$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $sum
+\backslash
+gets sum+i$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndFor
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module version:
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout State
+\begin_inset Formula $sum\gets0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout For
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $i\gets1,n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $sum\gets sum+i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFor
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Subsection
+While block
+\end_layout
+
+\begin_layout Standard
+Raw \SpecialChar LaTeX
+ version:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State $sum
+\backslash
+gets 0$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State $i
+\backslash
+gets 1$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+While{$i
+\backslash
+le n$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $sum
+\backslash
+gets sum+i$
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $i
+\backslash
+gets i+1$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module version:
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout State
+\begin_inset Formula $sum\gets0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $i\gets1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout While
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $i\le n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $sum\gets sum+i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $i\gets i+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndWhile
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Subsection
+Repeat block
+\end_layout
+
+\begin_layout Standard
+Raw \SpecialChar LaTeX
+ version:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State $sum
+\backslash
+gets 0$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State $i
+\backslash
+gets 1$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Repeat
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $sum
+\backslash
+gets sum+i$
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $i
+\backslash
+gets i+1$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Until{$i>n$}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module version:
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout State
+\begin_inset Formula $sum\gets0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $i\gets1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Repeat
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $sum\gets sum+i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $i\gets i+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Until
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $i>n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Subsection
+If block
+\end_layout
+
+\begin_layout Standard
+Raw \SpecialChar LaTeX
+ version:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+If{$quality
+\backslash
+ge 9$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $a
+\backslash
+gets perfect$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ElsIf{$quality
+\backslash
+ge 7$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $a
+\backslash
+gets good$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ElsIf{$quality
+\backslash
+ge 5$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $a
+\backslash
+gets medium$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ElsIf{$quality
+\backslash
+ge 3$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $a
+\backslash
+gets bad$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Else
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $a
+\backslash
+gets unusable$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndIf
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module version:
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout If
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $quality\ge9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $a\gets perfect$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Else if
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $quality\ge7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $a\gets good$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Else if
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $quality\ge5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $a\gets medium$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Else if
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $quality\ge3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $a\gets bad$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Else
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $a\gets unusable$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndIf
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Subsection
+Require/ensure
+\end_layout
+
+\begin_layout Standard
+Raw \SpecialChar LaTeX
+ version:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Require $x
+\backslash
+ge5$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ensure $x
+\backslash
+le-5$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+Statex
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+While{$x>-5$}
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+State $x
+\backslash
+gets x-1$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+EndWhile
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module version:
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Require
+\begin_inset Formula $x\ge5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Ensure
+\begin_inset Formula $x\le-5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Empty statement
+
+\end_layout
+
+\begin_layout While
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x>-5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $x\gets x-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndWhile
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Subsection
+Call
+\end_layout
+
+\begin_layout Standard
+Raw \SpecialChar LaTeX
+ version:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithmic}[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+State 
+\backslash
+Call{Create}{10}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithmic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Module version:
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Call
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Create
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
 \end_layout
 
 \end_body
