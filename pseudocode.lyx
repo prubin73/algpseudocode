@@ -5,6 +5,9 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\date{October 29, 2018}
+\end_preamble
 \use_default_options true
 \begin_modules
 pseudocode
@@ -101,7 +104,16 @@ Introduction
 \begin_layout Standard
 The 
 \family typewriter
-algorithmicx.sty
+
+\begin_inset CommandInset href
+LatexCommand href
+name "algorithmicx"
+target "https://ctan.org/pkg/algorithmicx/"
+literal "false"
+
+\end_inset
+
+
 \family default
  \SpecialChar LaTeX
  package provides commands for typesetting algorithms written in pseudocode.
@@ -115,13 +127,21 @@ algpseudocode.sty
 \family default
  style file, which is part of 
 \family typewriter
-algorithmicx.sty
+algorithmicx
 \family default
 .
- For details on how the package works, please see section 3.1 of the document
- file for 
+ For details on how the package works, please see section 3.1 of the 
+\begin_inset CommandInset href
+LatexCommand href
+name "documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/algorithmicx/algorithmicx.pdf"
+literal "false"
+
+\end_inset
+
+ for 
 \family typewriter
-algorithmicx.sty
+algorithmicx
 \family default
 .
 \end_layout
@@ -133,7 +153,7 @@ Installation
 \begin_layout Standard
 First, of course, you have to install the 
 \family typewriter
-algorithmicx.sty
+algorithmicx
 \family default
  package.
  After that, download the 
@@ -487,13 +507,15 @@ Labels can be inserted, in the usual way, in any line of a pseudocode listing.
 \end_layout
 
 \begin_layout Itemize
-Lines in the LyX source code do not indent (other than nesting inside the
- algorithm delimiters), but the output will indent properly.
+Lines in the \SpecialChar LyX
+ source code do not indent (other than nesting inside the algorithm
+ delimiters), but the output will indent properly.
 \end_layout
 
 \begin_layout Itemize
 You will frequently want to enter several consecutive statements.
- The LyX function 
+ The \SpecialChar LyX
+ function 
 \begin_inset Quotes eld
 \end_inset
 
@@ -514,6 +536,16 @@ State
 \end_layout
 
 \begin_layout Section
+License
+\end_layout
+
+\begin_layout Standard
+In keeping with the rest of \SpecialChar LyX
+, this is released under the GNU General Public
+ License version 2 (GPLv2).
+\end_layout
+
+\begin_layout Section
 Examples
 \end_layout
 
@@ -523,9 +555,19 @@ To demonstrate use of the module, we reproduce a number of examples from
 \family typewriter
 algorithmicx
 \family default
- manual, showing first the original code (in ERT) and then the equivalent
- \SpecialChar LyX
- code using the module.
+ manual
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Copyright 2005 by Szász János (szaszjanos@users.sourceforge.net)
+\end_layout
+
+\end_inset
+
+, showing first the original code (in ERT) and then the equivalent \SpecialChar LyX
+ code
+ using the module.
  By compiling this file to PDF, you can test the correctness of the module
  code.
 \end_layout

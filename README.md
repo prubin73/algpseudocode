@@ -1,4 +1,4 @@
-This repository contains a LyX module to facilitate use of the `algpseudocode.sty` style file, part of the `algorithmx` LaTeX package.
+This repository contains a LyX module to facilitate use of the `algpseudocode.sty` style file, part of the `algorithmx` LaTeX package. It is available under the GPLv2 open-source license.
 
 The module provides the following paragraph styles:
 
