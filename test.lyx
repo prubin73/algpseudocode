@@ -1,0 +1,304 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\algblock{Output}{EndOutput}
+\algnotext{EndOutput}
+\end_preamble
+\use_default_options true
+\begin_modules
+pseudocode
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 66
+Style "Input block"
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "inputblock"
+  KeepEmpty 1
+  Preamble
+    \algblock{Input}{EndInput}
+    \algnotext{EndInput}
+    \algrenewtext{Input}{\textbf{Input}}
+    \newenvironment{inputblock}{\Input}{\EndInput}
+  EndPreamble
+  AutoNests
+    "Declare input/output"
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Above
+  LabelString "Begin inputs"
+  EndLabelType Static
+  EndLabelString "End inputs"
+  LabelFont
+    Color green
+    Series Bold
+  EndFont
+End
+Style "Output block"
+  Category "Pseudocode"
+  LatexType Environment
+  LatexName "outputblock"
+  KeepEmpty 1
+  Preamble
+    \algblock{Output}{EndOutput}
+    \algnotext{EndOutput}
+    \algrenewtext{Output}{\textbf{Output}}
+    \newenvironment{outputblock}{\Output}{\EndOutput}
+  EndPreamble
+  AutoNests
+    "Declare input/output"
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Above
+  LabelString "Begin outputs"
+  EndLabelType Static
+  EndLabelString "End outputs"
+  LabelFont
+    Color green
+    Series Bold
+  EndFont
+End
+Style "Declare input/output"
+  Category "Pseudocode"
+  LatexType Command
+  LatexName "declare"
+  Preamble
+    \newcommand{\declare}[2]{\State \makebox[2em][r]{\textbf{#1}}\qquad \makebox[0.6\textwidth][l]{#2}}
+  EndPreamble
+  IsAutoNestedBy
+    Algorithm, "Input block"
+  EndIsAutoNestedBy
+  Margin Dynamic
+  Argument 1
+    LabelString "item"
+    MenuString "Insert the input/output item to declare"
+    ToolTip "Insert the input/output item to declare"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+  Argument 2
+    LabelString "description"
+    MenuSTring "Insert description"
+    Tooltip "Describe the input/output item"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument    
+End
+\end_local_layout
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize letterpaper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Input block
+
+\end_layout
+
+\begin_deeper
+\begin_layout Declare input/output
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+some number to increment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Input block
+
+\end_layout
+
+\begin_layout Output block
+
+\end_layout
+
+\begin_deeper
+\begin_layout Declare input/output
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x+1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+the incremented value of x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Output block
+
+\end_layout
+
+\begin_layout Function
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+increment
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Return
+\begin_inset Formula $x+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFunction
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\end_body
+\end_document
