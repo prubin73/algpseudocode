@@ -6,7 +6,7 @@
 \origin unavailable
 \textclass article
 \begin_preamble
-\date{October 29, 2018}
+\date{January 3, 2019}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -97,6 +97,10 @@ Paul A.
  Rubin (rubin@msu.edu)
 \end_layout
 
+\begin_layout Standard
+This document pertains to (beta) version 0.2.
+\end_layout
+
 \begin_layout Section
 Introduction
 \end_layout
@@ -144,6 +148,76 @@ literal "false"
 algorithmicx
 \family default
 .
+\end_layout
+
+\begin_layout Subsection
+Changes in this version
+\end_layout
+
+\begin_layout Itemize
+The order and grouping of styles in the environment drop-down list has been
+ modified (hopefully moving more common styles higher in the list).
+\end_layout
+
+\begin_layout Itemize
+Three styles have been added
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+These additions are not part of the algpseudocode package, but are motivated
+ by an answer by Andrew Swann to a 
+\begin_inset CommandInset href
+LatexCommand href
+name "question on Stack Exchange"
+target "https://tex.stackexchange.com/questions/408493/input-and-output-in-latex-algorithm"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Input block
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Output block
+\begin_inset Quotes erd
+\end_inset
+
+ are intended to be inserted in front of a function or procedure, letting
+ you explain the inputs (arguments) and outputs (return values).
+ One or more instances of 
+\begin_inset Quotes eld
+\end_inset
+
+Declare argument
+\begin_inset Quotes erd
+\end_inset
+
+ is inserted within one of those blocks (one per input or output value).
+ It provides two boxes side by side, similar to the standard 
+\begin_inset Quotes eld
+\end_inset
+
+Description
+\begin_inset Quotes erd
+\end_inset
+
+ environment (but without the use of bold face font), where you can specify
+ an argument and a description of the argument.
 \end_layout
 
 \begin_layout Section
@@ -220,7 +294,94 @@ Pseudocode
  for functions and procedures.
  Functions, procedures and pretty much everything else should be nested
  inside algorithms.
- 
+ In addition, it provides one paragraph style (
+\begin_inset Quotes eld
+\end_inset
+
+Return
+\begin_inset Quotes erd
+\end_inset
+
+) that the 
+\family typewriter
+algpseudocode.sty
+\family default
+ style does not provide.
+ This simply creates a statement that begins with the word 
+\begin_inset Quotes eld
+\end_inset
+
+return
+\begin_inset Quotes erd
+\end_inset
+
+ in bold, after which you can enter a return value (or not).
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Statements
+\begin_inset Quotes erd
+\end_inset
+
+ group provides the 
+\begin_inset Quotes eld
+\end_inset
+
+State
+\begin_inset Quotes erd
+\end_inset
+
+ command, which is the style to use for plain statements in a pseudocode
+ listing.
+ It also provides 
+\begin_inset Quotes eld
+\end_inset
+
+Call
+\begin_inset Quotes erd
+\end_inset
+
+ (for calling a procedure or function).
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Conditional
+\begin_inset Quotes erd
+\end_inset
+
+ group provides 
+\begin_inset Quotes eld
+\end_inset
+
+if
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+else
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+else if
+\begin_inset Quotes erd
+\end_inset
+
+ paragraph styles.
 \end_layout
 
 \begin_layout Itemize
@@ -273,7 +434,7 @@ The
 \begin_inset Quotes eld
 \end_inset
 
-Conditional
+Other
 \begin_inset Quotes erd
 \end_inset
 
@@ -281,15 +442,7 @@ Conditional
 \begin_inset Quotes eld
 \end_inset
 
-if
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-else
+Input block
 \begin_inset Quotes erd
 \end_inset
 
@@ -297,41 +450,23 @@ else
 \begin_inset Quotes eld
 \end_inset
 
-else if
+Output block
 \begin_inset Quotes erd
 \end_inset
 
- paragraph styles.
-\end_layout
-
-\begin_layout Itemize
-The 
+, which can be inserted at the start of an algorithm to specify inputs and
+ outputs.
+ The 
 \begin_inset Quotes eld
 \end_inset
 
-Statements
+Declare argument
 \begin_inset Quotes erd
 \end_inset
 
- group provides the 
-\begin_inset Quotes eld
-\end_inset
-
-State
-\begin_inset Quotes erd
-\end_inset
-
- command, which is the style to use for plain statements in a pseudocode
- listing.
- It also provides 
-\begin_inset Quotes eld
-\end_inset
-
-Call
-\begin_inset Quotes erd
-\end_inset
-
- (for calling a procedure or function), 
+ style is used inside either of these blocks to specify individual input
+ or output values.
+ This group also contains 
 \begin_inset Quotes eld
 \end_inset
 
@@ -349,28 +484,6 @@ Require
 
  (to state conditions for an algorithm), and an environment that inserts
  a blank line that will not be numbered.
- In addition, it provides one paragraph style (
-\begin_inset Quotes eld
-\end_inset
-
-Return
-\begin_inset Quotes erd
-\end_inset
-
-) that the 
-\family typewriter
-algpseudocode.sty
-\family default
- style does not provide.
- This simply creates a statement that begins with the word 
-\begin_inset Quotes eld
-\end_inset
-
-return
-\begin_inset Quotes erd
-\end_inset
-
- in bold, after which you can enter a return value (or not).
 \end_layout
 
 \begin_layout Standard
@@ -533,6 +646,84 @@ State
 \end_inset
 
  is the only style you are likely to want to apply to consecutive paragraphs.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Declare argument
+\begin_inset Quotes erd
+\end_inset
+
+ style takes three arguments (
+\begin_inset Quotes eld
+\end_inset
+
+item
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+description
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+box width
+\begin_inset Quotes erd
+\end_inset
+
+).
+ The first names the thing you are declaring, and the second describes it.
+ The third (
+\begin_inset Quotes eld
+\end_inset
+
+box width
+\begin_inset Quotes erd
+\end_inset
+
+) is an optional argument that adjusts the amount of space allocated for
+ the name portion.
+ If you look at the example in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Input/output-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ below, you will see that the output argument has its box width set to 3em
+ (wider than the default), while the two input arguments use the default
+ width.
+ The extra width for the output argument is necessary to prevent the item
+ name 
+\begin_inset Quotes eld
+\end_inset
+
+gcd(
+\begin_inset Formula $a$
+\end_inset
+
+,
+\begin_inset Formula $b$
+\end_inset
+
+)
+\begin_inset Quotes erd
+\end_inset
+
+ from breaking the left margin.
 \end_layout
 
 \begin_layout Section
@@ -1823,6 +2014,277 @@ status open
 
 \end_inset
 
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+
+\end_layout
+
+\begin_layout Subsection
+Input/output example
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Input/output-example"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This repeats Euclid's algorithm, but with input and output descriptions.
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Input block
+
+\end_layout
+
+\begin_deeper
+\begin_layout Declare argument
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+the first integer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Declare argument
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+the second integer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Input block
+
+\end_layout
+
+\begin_layout Output block
+
+\end_layout
+
+\begin_deeper
+\begin_layout Declare argument
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+gcd(
+\begin_inset Formula $a$
+\end_inset
+
+,
+\begin_inset Formula $b$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+the greatest common divisor of 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+3em
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Output block
+
+\end_layout
+
+\begin_layout Procedure
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Euclid
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $a,b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code comment
+status open
+
+\begin_layout Plain Layout
+The g.c.d.
+ of a and b
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $r\gets a\bmod b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout While
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $r\not=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code comment
+status open
+
+\begin_layout Plain Layout
+We have the answer if r is 0
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $a\gets b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $b\gets r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout State
+\begin_inset Formula $r\gets a\bmod b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndWhile
+
+\end_layout
+
+\begin_layout Return
+\begin_inset Formula $b$
+\end_inset
+
+ 
+\begin_inset Flex Code comment
+status open
+
+\begin_layout Plain Layout
+The gcd is b
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndProcedure
 
 \end_layout
 
