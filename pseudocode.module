@@ -15,7 +15,7 @@ EndPreamble
 # The Algorithm environment is the container for all pseudocode.
 #
 Style Algorithm
-  Category "Pseudocode"
+  Category "Algorithms"
   LatexType Environment
   LatexName "algorithmic"
   KeepEmpty 1
@@ -45,7 +45,7 @@ End
 # These two commands implement functions.
 #
 Style Function
-  Category "Pseudocode"
+  Category "Algorithms"
   LatexType Command
   LatexName "Function"
   LabelType Static
@@ -77,7 +77,7 @@ Style Function
   EndArgument
 End
 Style "EndFunction"
-  Category "Pseudocode"
+  Category "Algorithms"
   LatexType Command
   LatexName "EndFunction"
   LabelType Static
@@ -96,7 +96,7 @@ End
 # These two commands implement procedures.
 #
 Style Procedure
-  Category "Pseudocode"
+  Category "Algorithms"
   LatexType Command
   LatexName "Procedure"
   LabelType Static
@@ -128,7 +128,7 @@ Style Procedure
   EndArgument
 End
 Style "EndProcedure"
-  Category "Pseudocode"
+  Category "Algorithms"
   LatexType Command
   LatexName "EndProcedure"
   LabelType Static
@@ -144,170 +144,83 @@ Style "EndProcedure"
   KeepEmpty 1
 End
 #
-# ----- Looping -----
+# The Return style inserts a statement beginning with "return"
+# in bold. (This is not part of the algpseudocode package.)
 #
-# These two commands implement for loops.
-#
-Style For
-  Category "Looping"
+Style Return
+  Category "Algorithms"
   LatexType Command
-  LatexName "For"
+  LatexName "returnstmt"
+  Preamble
+    \newcommand{\returnstmt}[1]{\State \textbf{return} #1}
+  EndPreamble
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
   LabelType Static
-  Margin Dynamic
-  LabelString "For "
+  LabelString "Return  "
   LabelFont
     Color green
     Series bold
   EndFont
+  Margin Dynamic
+End
+#
+# ----- Statements -----
+#
+# State is how you enter typical pseudocode statements.
+#
+Style State
+  Category "Statements"
+  LatexType Command
+  LatexName "State"
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
-  KeepEmpty 1
+  LabelType Static
+  LabelString "State  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
+End
+#
+# This implements a procedure call.
+#
+Style Call
+  Category "Statements"
+  LatexType Command
+  LatexName "statecall"
+  Preamble
+    \newcommand{\statecall}[2]{\State \Call{#1}{#2}}
+  EndPreamble
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Static
+  LabelString "Call  "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  Margin Dynamic
   Argument 1
-    LabelString "loop condition"
-    MenuString "Set loop condition"
-    Tooltip "Specify the conditions for iterating"
+    LabelString "name"
+    MenuString "Insert procedure name"
+    Tooltip "Specify the name of the procedure to call"
     Mandatory 1
     Decoration conglomerate
     AutoInsert 1
   EndArgument
-End
-Style "EndFor"
-  Category "Looping"
-  LatexType Command
-  LatexName "EndFor"
-  LabelType Static
-  LabelString "End For"
-  Margin Dynamic
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
-End
-#
-# These two commands implement plain loops.
-#
-Style Loop
-  Category "Looping"
-  LatexType Command
-  LatexName "Loop"
-  LabelType Static
-  Margin Dynamic
-  LabelString "Loop "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
-End
-Style "EndLoop"
-  Category "Looping"
-  LatexType Command
-  LatexName "EndLoop"
-  LabelType Static
-  LabelString "End Loop"
-  Margin Dynamic
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
-End
-#
-# These two commands implement repeat blocks.
-#
-Style Repeat
-  Category "Looping"
-  LatexType Command
-  LatexName "Repeat"
-  LabelType Static
-  Margin Dynamic
-  LabelString "Repeat "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
-End
-Style Until
-  Category "Looping"
-  LatexType Command
-  LatexName "Until"
-  LabelType Static
-  Margin Dynamic
-  LabelString "Until "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
-  Argument 1
-    LabelString "termination condition"
-    MenuString "Set termination condition"
-    Tooltip "Specify the conditions for terminating the loop"
+  Argument 2
+    LabelString "arguments"
+    MenuSTring "Insert arguments"
+    Tooltip "Specify arguments for the call"
     Mandatory 1
     Decoration conglomerate
     AutoInsert 1
   EndArgument
-End
-#
-# These two commands implement while loops.
-#
-Style While
-  Category "Looping"
-  LatexType Command
-  LatexName "While"
-  LabelType Static
-  Margin Dynamic
-  LabelString "While "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
-  Argument 1
-    LabelString "loop condition"
-    MenuString "Set loop condition"
-    Tooltip "Specify the conditions for iterating"
-    Mandatory 1
-    Decoration conglomerate
-    AutoInsert 1
-  EndArgument
-End
-Style EndWhile
-  Category "Looping"
-  LatexType Command
-  LatexName "EndWhile"
-  LabelType Static
-  Margin Dynamic
-  LabelString "End While "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  KeepEmpty 1
 End
 #
 # ----- Conditional code -----
@@ -395,69 +308,279 @@ Style EndIf
   KeepEmpty 1
 End
 #
-# ----- Statements -----
+# ----- Looping -----
 #
+# These two commands implement for loops.
 #
-# This implements a procedure call.
-#
-Style Call
-  Category "Statements"
+Style For
+  Category "Looping"
   LatexType Command
-  LatexName "statecall"
-  Preamble
-    \newcommand{\statecall}[2]{\State \Call{#1}{#2}}
-  EndPreamble
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
+  LatexName "For"
   LabelType Static
-  LabelString "Call  "
+  Margin Dynamic
+  LabelString "For "
   LabelFont
     Color green
     Series bold
   EndFont
-  Margin Dynamic
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
   Argument 1
-    LabelString "name"
-    MenuString "Insert procedure name"
-    Tooltip "Specify the name of the procedure to call"
+    LabelString "loop condition"
+    MenuString "Set loop condition"
+    Tooltip "Specify the conditions for iterating"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+Style "EndFor"
+  Category "Looping"
+  LatexType Command
+  LatexName "EndFor"
+  LabelType Static
+  LabelString "End For"
+  Margin Dynamic
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+#
+# These two commands implement while loops.
+#
+Style While
+  Category "Looping"
+  LatexType Command
+  LatexName "While"
+  LabelType Static
+  Margin Dynamic
+  LabelString "While "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "loop condition"
+    MenuString "Set loop condition"
+    Tooltip "Specify the conditions for iterating"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+Style EndWhile
+  Category "Looping"
+  LatexType Command
+  LatexName "EndWhile"
+  LabelType Static
+  Margin Dynamic
+  LabelString "End While "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+#
+# These two commands implement repeat blocks.
+#
+Style Repeat
+  Category "Looping"
+  LatexType Command
+  LatexName "Repeat"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Repeat "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+Style Until
+  Category "Looping"
+  LatexType Command
+  LatexName "Until"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Until "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+  Argument 1
+    LabelString "termination condition"
+    MenuString "Set termination condition"
+    Tooltip "Specify the conditions for terminating the loop"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 1
+  EndArgument
+End
+#
+# These two commands implement plain loops.
+#
+Style Loop
+  Category "Looping"
+  LatexType Command
+  LatexName "Loop"
+  LabelType Static
+  Margin Dynamic
+  LabelString "Loop "
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+Style "EndLoop"
+  Category "Looping"
+  LatexType Command
+  LatexName "EndLoop"
+  LabelType Static
+  LabelString "End Loop"
+  Margin Dynamic
+  LabelFont
+    Color green
+    Series bold
+  EndFont
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  KeepEmpty 1
+End
+#
+# ----- Miscellaneous -----
+#
+#
+# The "Input block" and "Output block" styles insert blocks (intended to fit
+# inside an algorithm environment but outside a procedure or function) where
+# the author can specify inputs to and outputs from algorithms. This is not
+# part of the algpseudocode package, but is motivated by an answer by Andrew
+# Swann to a question on Stack Exchange.
+# (https://tex.stackexchange.com/questions/408493/input-and-output-in-latex-algorithm).
+#
+Style "Input block"
+  Category "Other"
+  LatexType Environment
+  LatexName "inputblock"
+  KeepEmpty 1
+  Preamble
+    \algblock{Input}{EndInput}
+    \algnotext{EndInput}
+    \algrenewtext{Input}{\textbf{Input}}
+    \newenvironment{inputblock}{\Input}{\EndInput}
+  EndPreamble
+  AutoNests
+    "Declare argument"
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Above
+  LabelString "Begin inputs"
+  EndLabelType Static
+  EndLabelString "End inputs"
+  LabelFont
+    Color green
+    Series Bold
+  EndFont
+End
+Style "Output block"
+  Category "Other"
+  LatexType Environment
+  LatexName "outputblock"
+  KeepEmpty 1
+  Preamble
+    \algblock{Output}{EndOutput}
+    \algnotext{EndOutput}
+    \algrenewtext{Output}{\textbf{Output}}
+    \newenvironment{outputblock}{\Output}{\EndOutput}
+  EndPreamble
+  AutoNests
+    "Declare argument"
+  EndAutoNests
+  IsAutoNestedBy
+    Algorithm
+  EndIsAutoNestedBy
+  LabelType Above
+  LabelString "Begin outputs"
+  EndLabelType Static
+  EndLabelString "End outputs"
+  LabelFont
+    Color green
+    Series Bold
+  EndFont
+End
+#
+# The "Declare argument" style is used to insert a description of an input
+# or output into an input or output block.
+#
+Style "Declare argument"
+  Category "Other"
+  LatexType Command
+  LatexName "declare"
+  Preamble
+    \newcommand{\declare}[3]{\State \makebox[#3][r]{#1}\qquad \makebox[0.6\textwidth][l]{#2}}
+  EndPreamble
+  IsAutoNestedBy
+    "Input block", "Output block", "Algorithm"
+  EndIsAutoNestedBy
+  Argument 1
+    LabelString "item"
+    MenuString "Insert the input/output item to declare"
+    ToolTip "Insert the input/output item to declare"
     Mandatory 1
     Decoration conglomerate
     AutoInsert 1
   EndArgument
   Argument 2
-    LabelString "arguments"
-    MenuSTring "Insert arguments"
-    Tooltip "Specify arguments for the call"
+    LabelString "description"
+    MenuString "Insert description"
+    Tooltip "Describe the input/output item"
     Mandatory 1
     Decoration conglomerate
     AutoInsert 1
   EndArgument
-End
-#
-# This implements Statex, which creates an unnumbered line in an algorithm.
-#
-Style "Empty statement"
-  Category "Statements"
-  LatexType Command
-  LatexName "Statex"
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  LabelType Static
-  LabelString "<unnumbered blank line>"
-  LabelFont
-    Color green
-    Series bold
-  EndFont
+  Argument 3
+    LabelString "box width"
+    Tooltip "width allocated to the item name/text"
+    Mandatory 1
+    Decoration conglomerate
+    AutoInsert 0
+    DefaultArg "2em"
+  EndArgument
   Margin Dynamic
-  KeepEmpty 1
 End
 #
-# This implements the Ensure statement.
+# The Ensure command implements the Ensure statement from the LaTeX package.
 #
 Style Ensure
-  Category "Statements"
+  Category "Other"
   LatexType Command
   LatexName "Ensure"
   IsAutoNestedBy
@@ -472,10 +595,10 @@ Style Ensure
   Margin Dynamic
 End
 #
-# This implements the Require statement
+# The Require command implements the Require statement from the LaTeX package.
 #
 Style Require
-  Category "Statements"
+  Category "Other"
   LatexType Command
   LatexName "Require"
   IsAutoNestedBy
@@ -490,44 +613,23 @@ Style Require
   Margin Dynamic
 End
 #
-# The Return style inserts a statement beginning with "return"
-# in bold. (This is not part of the algpseudocode package.)
+# This implements Statex, which creates an unnumbered line in an algorithm.
 #
-Style Return
-  Category "Statements"
+Style "Empty statement"
+  Category "Other"
   LatexType Command
-  LatexName "returnstmt"
-  Preamble
-    \newcommand{\returnstmt}[1]{\State \textbf{return} #1}
-  EndPreamble
+  LatexName "Statex"
   IsAutoNestedBy
     Algorithm
   EndIsAutoNestedBy
   LabelType Static
-  LabelString "Return  "
+  LabelString "<unnumbered blank line>"
   LabelFont
     Color green
     Series bold
   EndFont
   Margin Dynamic
-End
-#
-# State is how you enter typical pseudocode statements.
-#
-Style State
-  Category "Statements"
-  LatexType Command
-  LatexName "State"
-  IsAutoNestedBy
-    Algorithm
-  EndIsAutoNestedBy
-  LabelType Static
-  LabelString "State  "
-  LabelFont
-    Color green
-    Series bold
-  EndFont
-  Margin Dynamic
+  KeepEmpty 1
 End
 #
 #  ----- Insets -----
